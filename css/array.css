@@ -1,0 +1,21 @@
+#array {
+    height: 35px;
+    width: 500px;
+    position: relative;
+}
+  
+.array-element {
+    width: 28px;
+    background-color: #88CCEE;
+    position: absolute;
+    bottom: 0px;
+    transition: 0.2s all ease;
+}
+  
+.array-element-id {
+    position: absolute;
+    color: black;
+    margin-top: 0px;
+    width: 100%;
+    text-align: center;
+}
