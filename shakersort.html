@@ -70,8 +70,8 @@
 					<div class="alert alert-warning" role="alert">
 						<strong>ShakerSort (Element A[])</strong><br/>
 							<small>1</small>&emsp;<strong>boolean</strong> vertauscht;<br/>
-							<small>2</small>&emsp;<strong>int</strong> m := 1;<br/>
-							<small>3</small>&emsp;<strong>int</strong> n := A.length() - 2;<br/>
+							<small>2</small>&emsp;<strong>int</strong> m := -1;<br/>
+							<small>3</small>&emsp;<strong>int</strong> n := A.length() - 1;<br/>
 							<small>4</small>&emsp;<strong>do</strong><br/>
 							<small>5</small>	&emsp;&emsp;vertauscht := false;<br/>
 							<small>6</small>	&emsp;&emsp;m := m + 1;<br/>
@@ -86,7 +86,7 @@
 							<small>15</small>	&emsp;&emsp;<strong>end</strong><br/>
 							<small>16</small>	&emsp;&emsp;vertauscht := false;<br/>
 							<small>17</small>	&emsp;&emsp;n := n - 1;<br/>
-							<small>18</small>	&emsp;&emsp;<strong>for</strong> (<strong>int</strong> i := n; i < m; i++) <strong>do</strong><br/>
+							<small>18</small>	&emsp;&emsp;<strong>for</strong> (<strong>int</strong> i := n - 1; i > m - 1; i--) <strong>do</strong><br/>
 							<small>19</small>		&emsp;&emsp;&emsp;<strong>if</strong> (A[i].k > A[i + 1].k) <strong>then</strong><br/>
 							<small>20</small>			&emsp;&emsp;&emsp;&emsp;vertausche (A, i, i + 1);<br/>
 							<small>21</small>			&emsp;&emsp;&emsp;&emsp;vertauscht := true;<br/>
