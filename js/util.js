@@ -28,14 +28,19 @@ function randomNumber() {
   
 function swap(element1, element2) {
     return new Promise((resolve) => {
-        var tmp = element1.style.transform;
+		var tmp = element1.style.transform;
         element1.style.transform = element2.style.transform;
         element2.style.transform = tmp;
-  
+
         window.requestAnimationFrame(function() {
             // wait for 0.5 seconds
             setTimeout(() => {
-                array.insertBefore(element2, element1);
+                // node element1 and element2
+				var temp = document.createElement("div");
+				element1.parentNode.insertBefore(temp, element1);
+				element2.parentNode.insertBefore(element1, element2);
+				temp.parentNode.insertBefore(element2, temp);
+				temp.parentNode.removeChild(temp);
                 resolve();
             }, 500);
         });
