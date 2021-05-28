@@ -35,12 +35,12 @@ function swap(element1, element2) {
         window.requestAnimationFrame(function() {
             // wait for 0.5 seconds
             setTimeout(() => {
-                // node element1 and element2
-				var temp = document.createElement("div");
-				element1.parentNode.insertBefore(temp, element1);
+                // swap node element1 and element2
+				var tmp = document.createElement("div");
+				element1.parentNode.insertBefore(tmp, element1);
 				element2.parentNode.insertBefore(element1, element2);
-				temp.parentNode.insertBefore(element2, temp);
-				temp.parentNode.removeChild(temp);
+				tmp.parentNode.insertBefore(element2, tmp);
+				tmp.parentNode.removeChild(tmp);
                 resolve();
             }, 500);
         });
