@@ -63,17 +63,19 @@
 					<h3>Pseudocode</h3>
 					
 					<div class="alert alert-warning" role="alert">
-						<strong>Function Bubble_Sort (Element A[]; int n)</strong><br/>
-							&emsp;<strong>bool</strong> vertauscht;<br/>
-							&emsp;<strong>repeat</strong><br/>
-								&emsp;&emsp;vertauscht := false;<br/>
-								&emsp;&emsp;<strong>for</strong> (<strong>int</strong> i := 0; i < n − 1; i++) <strong>do</strong><br/>
-									&emsp;&emsp;&emsp;<strong>if</strong> (A[i]:k > A[i + 1]:k) <strong>then</strong><br/>
-										&emsp;&emsp;&emsp;&emsp;vertausche (A; i; i + 1);<br/>
-										&emsp;&emsp;&emsp;&emsp;vertauscht := true;<br/>
-									&emsp;&emsp;&emsp;<strong>end</strong><br/>
-								&emsp;&emsp;<strong>end</strong><br/>
-							&emsp;<strong>until</strong> (vertauscht = false);<br/>
+						<strong>BubbleSort (Element A[])</strong><br/>
+							<small>1</small>&emsp;<strong>boolean</strong> vertauscht;<br/>
+							<small>2</small>&emsp;<strong>int</strong> n := A.length();<br/>
+							<small>3</small>&emsp;<strong>do</strong><br/>
+							<small>4</small>	&emsp;&emsp;vertauscht := false;<br/>
+							<small>5</small>	&emsp;&emsp;<strong>for</strong> (<strong>int</strong> i := 0; i < n − 1; i++) <strong>do</strong><br/>
+							<small>6</small>		&emsp;&emsp;&emsp;<strong>if</strong> (A[i].k > A[i + 1].k) <strong>then</strong><br/>
+							<small>7</small>			&emsp;&emsp;&emsp;&emsp;vertausche (A; i; i + 1);<br/>
+							<small>8</small>			&emsp;&emsp;&emsp;&emsp;vertauscht := true;<br/>
+							<small>9</small>		&emsp;&emsp;&emsp;<strong>end</strong><br/>
+							<small>10</small>	&emsp;&emsp;<strong>end</strong><br/>
+							<small>11</small>	&emsp;&emsp;n := n - 1;<br/>
+							<small>12</small>&emsp;<strong>while</strong> (vertauscht == true);<br/>
 					</div>
 			  </div>
 
