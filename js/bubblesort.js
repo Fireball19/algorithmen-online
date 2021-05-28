@@ -7,7 +7,7 @@ async function bubbleSort(delay = 250) {
 	var vertauscht;
 	var n = array.length;
 	do {
-		var vertauscht = false;
+		vertauscht = false;
 		for (var i = 0; i < n - 1; i++) {
 			// change the color of elements to comparing color
 			array[i].style.backgroundColor = "#CC6677";
