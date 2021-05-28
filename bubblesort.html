@@ -8,6 +8,7 @@
 		<!-- Bootstrap CSS -->
 		<link rel="stylesheet" href="dist/bootstrap/bootstrap.min.css"/>
 		<link rel="stylesheet" href="css/navbar.css"/>
+		<link rel="stylesheet" href="css/array.css"/>
 
 		<title>Algorithmen - online</title>
 	</head>
@@ -30,6 +31,7 @@
 					Sortieren
 				  </a>
 				  <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuLink">
+					<li><a class="dropdown-item" href="selectionsort.html">SelectionSort</a></li>
 					<li><a class="dropdown-item active" href="#">BubbleSort</a></li>
 				  </ul>
 				</li>
@@ -42,7 +44,7 @@
 		
 		<h1>BubbleSort</h1>
 		
-		BubbleSort hat eine Laufzeit von <var>O(n)</var> im Best-Case und von <var>O(n²)</var> im Average- und Worst-Case.
+		BubbleSort hat eine Laufzeit von <var><strong>O(n)</strong></var> im Best-Case und von <var><strong>O(n²)</strong></var> im Average- und Worst-Case.
 		
 		<hr>
 		
@@ -53,8 +55,9 @@
 			  <div class="col-md-6">
 
 			<h3>Demo</h3>
+			<div id="array"></div>
 			<br>
-			<button type="button" class="btn btn-primary" onclick="BubbleSort()">Zufällige Zahlenfolge sortieren</button>
+			<button type="button" class="btn btn-primary" onclick="bubbleSort()">Zufällige Zahlenfolge sortieren</button>
 
 			  </div>
 			  <!--Grid column-->
@@ -63,17 +66,19 @@
 					<h3>Pseudocode</h3>
 					
 					<div class="alert alert-warning" role="alert">
-						<strong>Function Bubble_Sort (Element A[]; int n)</strong><br/>
-							&emsp;<strong>bool</strong> vertauscht;<br/>
-							&emsp;<strong>repeat</strong><br/>
-								&emsp;&emsp;vertauscht := false;<br/>
-								&emsp;&emsp;<strong>for</strong> (<strong>int</strong> i := 0; i < n − 1; i++) <strong>do</strong><br/>
-									&emsp;&emsp;&emsp;<strong>if</strong> (A[i]:k > A[i + 1]:k) <strong>then</strong><br/>
-										&emsp;&emsp;&emsp;&emsp;vertausche (A; i; i + 1);<br/>
-										&emsp;&emsp;&emsp;&emsp;vertauscht := true;<br/>
-									&emsp;&emsp;&emsp;<strong>end</strong><br/>
-								&emsp;&emsp;<strong>end</strong><br/>
-							&emsp;<strong>until</strong> (vertauscht = false);<br/>
+						<strong>BubbleSort (Element A[])</strong><br/>
+							<small>1</small>&emsp;<strong>boolean</strong> vertauscht;<br/>
+							<small>2</small>&emsp;<strong>int</strong> n := A.length();<br/>
+							<small>3</small>&emsp;<strong>do</strong><br/>
+							<small>4</small>	&emsp;&emsp;vertauscht := false;<br/>
+							<small>5</small>	&emsp;&emsp;<strong>for</strong> (<strong>int</strong> i := 0; i < n − 1; i++) <strong>do</strong><br/>
+							<small>6</small>		&emsp;&emsp;&emsp;<strong>if</strong> (A[i].k > A[i + 1].k) <strong>then</strong><br/>
+							<small>7</small>			&emsp;&emsp;&emsp;&emsp;vertausche (A; i; i + 1);<br/>
+							<small>8</small>			&emsp;&emsp;&emsp;&emsp;vertauscht := true;<br/>
+							<small>9</small>		&emsp;&emsp;&emsp;<strong>end</strong><br/>
+							<small>10</small>	&emsp;&emsp;<strong>end</strong><br/>
+							<small>11</small>	&emsp;&emsp;n := n - 1;<br/>
+							<small>12</small>&emsp;<strong>while</strong> (vertauscht == true);<br/>
 					</div>
 			  </div>
 
@@ -93,5 +98,7 @@
 		</footer>
 		
 		<script src="dist/bootstrap/bootstrap.bundle.min.js"></script>
+		<script src="js/util.js"></script>
+		<script src="js/bubblesort.js"></script>
 	</body>
 </html>
