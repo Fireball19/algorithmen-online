@@ -31,12 +31,12 @@
 					Sortieren
 				  </a>
 				  <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuLink">
-					<li><a class="dropdown-item active" href="#">SelectionSort</a></li>
+					<li><a class="dropdown-item" href="selectionsort.html">SelectionSort</a></li>
 					<li><a class="dropdown-item" href="insertionsort.html">InsertionSort</a></li>
 					<li><a class="dropdown-item" href="bubblesort.html">BubbleSort</a></li>
 					<li><a class="dropdown-item" href="shakersort.html">ShakerSort</a></li>
 					<li><a class="dropdown-item" href="quicksort.html">QuickSort</a></li>
-					<li><a class="dropdown-item" href="heapsort.html">HeapSort</a></li>
+					<li><a class="dropdown-item active" href="#">HeapSort</a></li>
 				  </ul>
 				</li>
 			  </ul>
@@ -46,9 +46,9 @@
 
 		<main class="container content-center">
 		
-		<h1>SelectionSort</h1>
+		<h1>HeapSort</h1>
 		
-		SelectionSort hat eine Laufzeit im Best-, Average- und Worst-Case von <var><strong>O(n²)</strong></var>.
+		HeapSort hat eine Laufzeit von <var><strong>O(n log(n))</strong></var> im Best-, Average- und Worst-Case. Der initiale Aufbau hat zusätzlich eine Laufzeit von <var><strong>O(n)</strong></var>.
 		
 		<hr>
 		
@@ -61,7 +61,7 @@
 			<h3>Demo</h3>
 			<div id="array"></div>
 			<br>
-			<button type="button" class="btn btn-primary" onclick="selectionSort()">Zufällige Zahlenfolge sortieren</button>
+			<button type="button" class="btn btn-primary" onclick="heapSort()">Zufällige Zahlenfolge sortieren</button>
 
 			  </div>
 			  <!--Grid column-->
@@ -70,19 +70,29 @@
 					<h3>Pseudocode</h3>
 					
 					<div class="alert alert-warning" role="alert">
-						<strong>SelectionSort (Element A[])</strong><br/>
-							<small>1</small>&emsp;<strong>int</strong> n := A.length();<br/>
-							<small>2</small>&emsp;<strong>for</strong> (<strong>int</strong> i := 0; i < n − 1; i++) <strong>do</strong><br/>
-							<small>3</small>	&emsp;&emsp;<strong>int</strong> m := i;<br/>
-							<small>4</small>	&emsp;&emsp;<strong>for</strong> (<strong>int</strong> j := i + 1; j < n; j++) <strong>do</strong><br/>
-							<small>5</small>		&emsp;&emsp;&emsp;<strong>if</strong> (A[j].k < A[m].k) <strong>then</strong><br/>
-							<small>6</small>			&emsp;&emsp;&emsp;&emsp;m := j;<br/>
-							<small>7</small>		&emsp;&emsp;&emsp;<strong>end</strong><br/>
-							<small>8</small>	&emsp;&emsp;<strong>end</strong><br/>
-							<small>9</small>	&emsp;&emsp;<strong>if</strong> (m != i);<br/>
-							<small>10</small>	&emsp;&emsp;&emsp;vertausche (A, i, m);<br/>
-							<small>11</small>	&emsp;&emsp;<strong>end</strong><br/>
-							<small>12</small>&emsp;<strong>end</strong><br/>
+						<strong>int</strong> n := A.length();<br/>
+						<strong>HeapSort (Element A[], int n)</strong><br/>
+							<small>1</small>&emsp;<strong>for</strong> (<strong>int</strong> i := (n / 2) - 1; i >= 0; i--) <strong>do</strong><br/>
+							<small>2</small>&emsp;&emsp;versickere(A, i, n - 1);<br/>
+							<small>3</small>&emsp;<strong>end</strong><br/>
+							<small>4</small>&emsp;<strong>for</strong> (<strong>int</strong> i := n - 1; i > 0; i--) <strong>do</strong><br/>
+							<small>5</small>&emsp;&emsp;vertausche(A, i, 0);<br/>
+							<small>6</small>&emsp;&emsp;versickere(A, 0, i - 1);<br/>
+							<small>7</small>&emsp;<strong>end</strong><br/>
+						<br/>
+						<strong>versickere (Element A[], int i, int m)</strong><br/>
+						<small>1</small>&emsp;<strong>while</strong> (2 * i + 1 <= m) <strong>do</strong><br/>
+						<small>2</small>&emsp;&emsp;<strong>int</strong> j := 2 * i + 1;<br/>
+						<small>3</small>&emsp;&emsp;<strong>if</strong> ((2 * i + 2 <= m) <strong>and</strong> (A[2 * i + 1].k < A[2 * i + 2].k)) <strong>then</strong><br/>
+						<small>4</small>&emsp;&emsp;&emsp;j := 2 * i + 2;<br/>
+						<small>5</small>&emsp;&emsp;<strong>end</strong><br/>
+						<small>6</small>&emsp;&emsp;<strong>if</strong> (A[i].k < A[j].k) <strong>then</strong><br/>
+						<small>7</small>&emsp;&emsp;&emsp;vertausche(A, i, j);<br/>
+						<small>8</small>&emsp;&emsp;&emsp;i := j;<br/>
+						<small>9</small>&emsp;&emsp;<strong>else</strong><br/>
+						<small>10</small>&emsp;&emsp;&emsp;i := m;<br/>
+						<small>11</small>&emsp;&emsp;<strong>end</strong><br/>
+						<small>12</small>&emsp;<strong>end</strong><br/>
 					</div>
 			  </div>
 
@@ -103,6 +113,6 @@
 		
 		<script src="dist/bootstrap/bootstrap.bundle.min.js"></script>
 		<script src="js/util.js"></script>
-		<script src="js/selectionsort.js"></script>
+		<script src="js/heapsort.js"></script>
 	</body>
 </html>
