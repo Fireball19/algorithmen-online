@@ -8,7 +8,7 @@
 		<!-- Bootstrap CSS -->
 		<link rel="stylesheet" href="dist/bootstrap/bootstrap.min.css"/>
 		<link rel="stylesheet" href="css/navbar.css"/>
-		<link rel="stylesheet" href="css/array.css"/>
+		<link rel="stylesheet" href="css/hashtable.css"/>
 
 		<title>Algorithmen - online</title>
 	</head>
@@ -27,7 +27,7 @@
 					</a>
 				</li>
 				<li class="nav-item dropdown">
-				  <a class="nav-link dropdown-toggle active" href="#" id="navbarDarkDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+				  <a class="nav-link dropdown-toggle" href="#" id="navbarDarkDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
 					Sortieren
 				  </a>
 				  <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuLink">
@@ -38,17 +38,17 @@
 					<li><a class="dropdown-item" href="bubblesort.html">BubbleSort</a></li>
 					<li><a class="dropdown-item" href="shakersort.html">ShakerSort</a></li>
 					<hr>
-					<li><a class="dropdown-item active" href="#">QuickSort</a></li>
+					<li><a class="dropdown-item" href="quicksort.html">QuickSort</a></li>
 					<li><a class="dropdown-item" href="heapsort.html">HeapSort</a></li>
 				  </ul>
 				</li>
 				<li class="nav-item dropdown">
-				  <a class="nav-link dropdown-toggle" href="#" id="navbarDarkDropdownMenuLinkHashing" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+				  <a class="nav-link dropdown-toggle active" href="#" id="navbarDarkDropdownMenuLinkHashing" role="button" data-bs-toggle="dropdown" aria-expanded="false">
 					Hashing
 				  </a>
 				  <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuLinkHashing">
 					<li><a class="dropdown-item" href="linearessondieren.html">Lineares Sondieren</a></li>
-					<li><a class="dropdown-item" href="quadratischessondieren.html">Quadratisches Sondieren</a></li>
+					<li><a class="dropdown-item active" href="#">Quadratisches Sondieren</a></li>
 				  </ul>
 				</li>
 			  </ul>
@@ -58,9 +58,9 @@
 
 		<main class="container content-center">
 		
-		<h1>QuickSort</h1>
+		<h1>Quadratisches Sondieren</h1>
 		
-		QuickSort hat eine Laufzeit von <var><strong>O(n log(n))</strong></var> im Best- und Average-Case und von <var><strong>O(n²)</strong></var> im Worst-Case.
+		Quadratisches Sondieren neigt zur sekundären Häufung, da zwei Schlüssel <var><strong>k_1</var></strong> und <var><strong>k_2</var></strong> mit <var><strong>h(k_1) = h(k_2)</var></strong> dieselbe Sondierungsfolge besitzen.
 		
 		<hr>
 		
@@ -71,40 +71,21 @@
 			  <div class="col-md-6">
 
 			<h3>Demo</h3>
-			<div id="array"></div>
+			<div id="hashtable"></div>
 			<br>
-			<button type="button" class="btn btn-primary" onclick="quickSort()">Zufällige Zahlenfolge sortieren</button>
+			<button type="button" class="btn btn-primary" onclick="quadratischesSondieren()">Zufällige Zahlenfolge hashen</button>
 
 			  </div>
 			  <!--Grid column-->
 			  
 			  <div class="col-md-6">
-					<h3>Pseudocode</h3>
+					<h3>Hashfunktion</h3>
 					
 					<div class="alert alert-warning" role="alert">
-						<strong>int</strong> l := 0;<br/>
-						<strong>int</strong> r := A.length() - 1;<br/>
-						<strong>QuickSort (Element A[], int l, int r)</strong><br/>
-							<small>1</small>&emsp;<strong>if</strong> (l < r) <strong>then</strong><br/>
-							<small>2</small>&emsp;&emsp;<strong>int</strong> p := r;<br/>
-							<small>3</small>&emsp;&emsp;<strong>int</strong> i := l;<br/>
-							<small>4</small>&emsp;&emsp;<strong>int</strong> j := r - 1;<br/>
-							<small>5</small>	&emsp;&emsp;<strong>do</strong><br/>
-							<small>6</small>	&emsp;&emsp;&emsp;<strong>while</strong> ((i <= j) <strong>and</strong> (A[i].k <= A[p].k)) <strong>do</strong><br/>
-							<small>7</small>		&emsp;&emsp;&emsp;&emsp;i++;<br/>
-							<small>8</small>			&emsp;&emsp;&emsp;<strong>end</strong><br/>
-							<small>9</small>	&emsp;&emsp;&emsp;<strong>while</strong> ((i <= j) <strong>and</strong> (A[j].k >= A[p].k)) <strong>do</strong><br/>
-							<small>10</small>		&emsp;&emsp;&emsp;&emsp;j--;<br/>
-							<small>11</small>			&emsp;&emsp;&emsp;<strong>end</strong><br/>
-							<small>12</small>	&emsp;&emsp;&emsp;<strong>if</strong> (i < j) <strong>then</strong><br/>
-							<small>13</small>		&emsp;&emsp;&emsp;&emsp;vertausche(A, i, j);<br/>
-							<small>14</small>		&emsp;&emsp;&emsp;&emsp;i++;<br/>
-							<small>15</small>		&emsp;&emsp;&emsp;&emsp;j--;<br/>
-							<small>16</small>	&emsp;&emsp;<strong>while</strong> (i <= j)<br/>
-							<small>17</small>	&emsp;&emsp;vertausche(A, i, r);<br/>
-							<small>18</small>	&emsp;&emsp;QuickSort(A, l, i - 1);<br/>
-							<small>19</small>	&emsp;&emsp;QuickSort(A, i + 1, r);<br/>
-							<small>20</small>	&emsp;<strong>end</strong><br/>
+						<strong>Quadratisches Sondieren</strong><br/>
+						n := Größe Hashtabelle<br/>
+						<strong>h(k)</strong> := k mod n<br/>
+						<strong>Sondierungsfolge</strong> := h(k), (h(k) + 1) mod n, (h(k) − 1) mod n, (h(k) + 4) mod n, (h(k) − 4) mod n, ...<br/>
 					</div>
 			  </div>
 
@@ -126,6 +107,6 @@
 		
 		<script src="dist/bootstrap/bootstrap.bundle.min.js"></script>
 		<script src="js/util.js"></script>
-		<script src="js/quicksort.js"></script>
+		<script src="js/quadratischessondieren.js"></script>
 	</body>
 </html>
