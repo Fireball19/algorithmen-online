@@ -50,6 +50,10 @@ function generateHashtable() {
 function randomNumber() {
 	return Math.ceil(Math.random() * 100);
 }
+
+function mod(x, m) {
+    return (x % m + m) % m;
+}
   
 function swap(element1, element2) {
     return new Promise((resolve) => {
