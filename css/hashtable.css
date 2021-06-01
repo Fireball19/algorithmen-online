@@ -1,0 +1,29 @@
+#hashtable {
+    height: 60px;
+    width: 500px;
+    position: relative;
+}
+  
+.hashtable-element {
+    width: 28px;
+    background-color: #88CCEE;
+    position: absolute;
+    bottom: 0px;
+    transition: 0.2s all ease;
+}
+  
+.hashtable-element-id {
+    position: absolute;
+    color: black;
+    margin-top: 0px;
+    width: 100%;
+    text-align: center;
+}
+
+.hashtable-element-index {
+    position: absolute;
+    color: black;
+    margin-top: -25px;
+    width: 100%;
+    text-align: center;
+}
