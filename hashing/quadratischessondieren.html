@@ -6,9 +6,9 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 
 		<!-- Bootstrap CSS -->
-		<link rel="stylesheet" href="dist/bootstrap/bootstrap.min.css"/>
-		<link rel="stylesheet" href="css/navbar.css"/>
-		<link rel="stylesheet" href="css/array.css"/>
+		<link rel="stylesheet" href="../dist/bootstrap/bootstrap.min.css"/>
+		<link rel="stylesheet" href="../css/navbar.css"/>
+		<link rel="stylesheet" href="../css/hashtable.css"/>
 
 		<title>Algorithmen - online</title>
 	</head>
@@ -22,33 +22,33 @@
 			<div class="collapse navbar-collapse" id="navbarCollapse">
 			  <ul class="navbar-nav">
 				<li class="nav-item">
-					<a class="nav-link" href="index.html">
+					<a class="nav-link" href="../index.html">
 					Übersicht
 					</a>
 				</li>
 				<li class="nav-item dropdown">
-				  <a class="nav-link dropdown-toggle active" href="#" id="navbarDarkDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+				  <a class="nav-link dropdown-toggle" href="#" id="navbarDarkDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
 					Sortieren
 				  </a>
 				  <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuLink">
-					<li><a class="dropdown-item" href="selectionsort.html">SelectionSort</a></li>
+					<li><a class="dropdown-item" href="../sorting/selectionsort.html">SelectionSort</a></li>
 					<hr>
-					<li><a class="dropdown-item" href="gnomesort.html">GnomeSort</a></li>
-					<li><a class="dropdown-item active" href="#">InsertionSort</a></li>
-					<li><a class="dropdown-item" href="bubblesort.html">BubbleSort</a></li>
-					<li><a class="dropdown-item" href="shakersort.html">ShakerSort</a></li>
+					<li><a class="dropdown-item" href="../sorting/gnomesort.html">GnomeSort</a></li>
+					<li><a class="dropdown-item" href="../sorting/insertionsort.html">InsertionSort</a></li>
+					<li><a class="dropdown-item" href="../sorting/bubblesort.html">BubbleSort</a></li>
+					<li><a class="dropdown-item" href="../sorting/shakersort.html">ShakerSort</a></li>
 					<hr>
-					<li><a class="dropdown-item" href="quicksort.html">QuickSort</a></li>
-					<li><a class="dropdown-item" href="heapsort.html">HeapSort</a></li>
+					<li><a class="dropdown-item" href="../sorting/quicksort.html">QuickSort</a></li>
+					<li><a class="dropdown-item" href="../sorting/heapsort.html">HeapSort</a></li>
 				  </ul>
 				</li>
 				<li class="nav-item dropdown">
-				  <a class="nav-link dropdown-toggle" href="#" id="navbarDarkDropdownMenuLinkHashing" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+				  <a class="nav-link dropdown-toggle active" href="#" id="navbarDarkDropdownMenuLinkHashing" role="button" data-bs-toggle="dropdown" aria-expanded="false">
 					Hashing
 				  </a>
 				  <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuLinkHashing">
 					<li><a class="dropdown-item" href="linearessondieren.html">Lineares Sondieren</a></li>
-					<li><a class="dropdown-item" href="quadratischessondieren.html">Quadratisches Sondieren</a></li>
+					<li><a class="dropdown-item active" href="#">Quadratisches Sondieren</a></li>
 				  </ul>
 				</li>
 			  </ul>
@@ -58,9 +58,9 @@
 
 		<main class="container content-center">
 		
-		<h1>InsertionSort</h1>
+		<h1>Quadratisches Sondieren</h1>
 		
-		InsertionSort hat eine Laufzeit von <var><strong>O(n)</strong></var> im Best-Case und von <var><strong>O(n²)</strong></var> im Average- und Worst-Case.
+		Quadratisches Sondieren neigt zur sekundären Häufung, da zwei Schlüssel <var><strong>k_1</var></strong> und <var><strong>k_2</var></strong> mit <var><strong>h(k_1) = h(k_2)</var></strong> dieselbe Sondierungsfolge besitzen.
 		
 		<hr>
 		
@@ -71,26 +71,21 @@
 			  <div class="col-md-6">
 
 			<h3>Demo</h3>
-			<div id="array"></div>
+			<div id="hashtable"></div>
 			<br>
-			<button type="button" class="btn btn-primary" onclick="insertionSort()">Zufällige Zahlenfolge sortieren</button>
+			<button type="button" class="btn btn-primary" onclick="quadratischesSondieren()">Zufällige Zahlenfolge hashen</button>
 
 			  </div>
 			  <!--Grid column-->
 			  
 			  <div class="col-md-6">
-					<h3>Pseudocode</h3>
+					<h3>Hashfunktion</h3>
 					
 					<div class="alert alert-warning" role="alert">
-						<strong>InsertionSort (Element A[])</strong><br/>
-							<small>1</small>&emsp;<strong>int</strong> n := A.length();<br/>
-							<small>2</small>&emsp;<strong>for</strong> (<strong>int</strong> i := 1; i < n; i++) <strong>do</strong><br/>
-							<small>3</small>	&emsp;&emsp;<strong>int</strong> j := i;<br/>
-							<small>4</small>	&emsp;&emsp;<strong>while</strong> ((j > 0) <strong>and</strong> (A[j].k < A[j - 1].k)) <strong>do</strong><br/>
-							<small>5</small>		&emsp;&emsp;&emsp;vertausche (A, j, j - 1);<br/>
-							<small>6</small>			&emsp;&emsp;&emsp;j--;<br/>
-							<small>7</small>		&emsp;&emsp;<strong>end</strong><br/>
-							<small>8</small>&emsp;<strong>end</strong><br/>
+						<strong>Quadratisches Sondieren</strong><br/>
+						n := Größe Hashtabelle<br/>
+						<strong>h(k)</strong> := k mod n<br/>
+						<strong>Sondierungsfolge</strong> := h(k), (h(k) + 1) mod n, (h(k) − 1) mod n, (h(k) + 4) mod n, (h(k) − 4) mod n, ...<br/>
 					</div>
 			  </div>
 
@@ -110,8 +105,8 @@
 			</div>
 		</footer>
 		
-		<script src="dist/bootstrap/bootstrap.bundle.min.js"></script>
-		<script src="js/util.js"></script>
-		<script src="js/insertionsort.js"></script>
+		<script src="../dist/bootstrap/bootstrap.bundle.min.js"></script>
+		<script src="../js/util.js"></script>
+		<script src="../js/hashing/quadratischessondieren.js"></script>
 	</body>
 </html>
