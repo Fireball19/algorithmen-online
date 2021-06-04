@@ -4,6 +4,8 @@ async function gnomeSort(delay = 250) {
 	
     var array = document.querySelectorAll(".array-element");
 	
+	spinningDemo();
+	
 	var n = array.length;
 	var i = 0;
 	while (i < n) {
@@ -43,4 +45,6 @@ async function gnomeSort(delay = 250) {
 	for (var j = 0; j < n; j++) {
 		array[j].style.backgroundColor = "#117733";
 	}
+	
+	stopSpinningDemo();
 }

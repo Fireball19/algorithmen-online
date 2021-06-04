@@ -1,4 +1,4 @@
-function heapSort() {
+async function heapSort() {
 	// generate array with random elements
 	generateArray();
 
@@ -6,7 +6,11 @@ function heapSort() {
 	
 	var n = array.length;
 	
-	heapSortImpl(array, n);
+	spinningDemo();
+	
+	await heapSortImpl(array, n);
+	
+	stopSpinningDemo();
 }
 
 async function heapSortImpl(array, n, delay = 250) {

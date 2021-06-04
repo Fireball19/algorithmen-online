@@ -4,6 +4,8 @@ async function insertionSort(delay = 250) {
 	
     var array = document.querySelectorAll(".array-element");
 	
+	spinningDemo();
+	
 	var n = array.length;
 	for (var i = 1; i < n; i++) {
 		var j = i;
@@ -50,6 +52,8 @@ async function insertionSort(delay = 250) {
 	for (var i = 0; i < n; i++) {
 		array[i].style.backgroundColor = "#117733";
 	}
+	
+	stopSpinningDemo();
 }
 
 function compare(a, i) {

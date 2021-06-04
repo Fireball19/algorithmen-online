@@ -1,14 +1,23 @@
-function quickSort() {
+
+// variable to count recursive calls to stop spinner at last call
+var counter = 0;
+
+async function quickSort() {
 	// generate array with random elements
 	generateArray();
 	
 	var array = document.querySelectorAll(".array-element");
+
+	spinningDemo();
+
 	var l = 0;
 	var r = array.length - 1;
 	quickSortImpl(array, l, r);
 }
 
 async function quickSortImpl(array, l, r, delay = 250) {
+	counter++;
+	
 	if (l < r) {
 		var p = r;
 		var i = l;
@@ -49,6 +58,13 @@ async function quickSortImpl(array, l, r, delay = 250) {
 	}
 	
 	else {
-		array[l].style.backgroundColor = "#117733";
+		if (array[l] != null) {
+			array[l].style.backgroundColor = "#117733";
+		}
+	}
+	
+	counter--;
+	if (counter == 0) {
+		stopSpinningDemo();
 	}
 }

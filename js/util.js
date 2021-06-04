@@ -1,5 +1,9 @@
 var array = document.getElementById("array");
 var hashtable = document.getElementById("hashtable");
+var demoSpinner = document.getElementById("demo-spinner");
+var demoSpinnerText = document.getElementById("demo-spinner-text");
+var demoBtn = document.getElementById("demo-btn");
+var demoBtnText = document.getElementById("demo-btn-text");
   
 function generateArray() {
 	// delete old array
@@ -53,6 +57,21 @@ function randomNumber() {
 
 function mod(x, m) {
     return (x % m + m) % m;
+}
+
+function spinningDemo() {
+	demoBtn.disabled = true;
+	demoBtn.blur();
+	demoSpinner.classList.remove("visually-hidden");
+	demoSpinnerText.classList.remove("visually-hidden");
+	demoBtnText.classList.add("visually-hidden");
+}
+
+function stopSpinningDemo() {
+	demoBtn.disabled = false;
+	demoSpinner.classList.add("visually-hidden");
+	demoSpinnerText.classList.add("visually-hidden");
+	demoBtnText.classList.remove("visually-hidden");
 }
   
 function swap(element1, element2) {
