@@ -6,9 +6,9 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 
 		<!-- Bootstrap CSS -->
-		<link rel="stylesheet" href="dist/bootstrap/bootstrap.min.css"/>
-		<link rel="stylesheet" href="css/navbar.css"/>
-		<link rel="stylesheet" href="css/array.css"/>
+		<link rel="stylesheet" href="../dist/bootstrap/bootstrap.min.css"/>
+		<link rel="stylesheet" href="../css/navbar.css"/>
+		<link rel="stylesheet" href="../css/array.css"/>
 
 		<title>Algorithmen - online</title>
 	</head>
@@ -22,7 +22,7 @@
 			<div class="collapse navbar-collapse" id="navbarCollapse">
 			  <ul class="navbar-nav">
 				<li class="nav-item">
-					<a class="nav-link" href="index.html">
+					<a class="nav-link" href="../index.html">
 					Übersicht
 					</a>
 				</li>
@@ -33,8 +33,8 @@
 				  <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuLink">
 					<li><a class="dropdown-item" href="selectionsort.html">SelectionSort</a></li>
 					<hr>
-					<li><a class="dropdown-item active" href="#">GnomeSort</a></li>
-					<li><a class="dropdown-item" href="insertionsort.html">InsertionSort</a></li>
+					<li><a class="dropdown-item" href="gnomesort.html">GnomeSort</a></li>
+					<li><a class="dropdown-item active" href="#">InsertionSort</a></li>
 					<li><a class="dropdown-item" href="bubblesort.html">BubbleSort</a></li>
 					<li><a class="dropdown-item" href="shakersort.html">ShakerSort</a></li>
 					<hr>
@@ -47,8 +47,8 @@
 					Hashing
 				  </a>
 				  <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuLinkHashing">
-					<li><a class="dropdown-item" href="linearessondieren.html">Lineares Sondieren</a></li>
-					<li><a class="dropdown-item" href="quadratischessondieren.html">Quadratisches Sondieren</a></li>
+					<li><a class="dropdown-item" href="../hashing/linearessondieren.html">Lineares Sondieren</a></li>
+					<li><a class="dropdown-item" href="../hashing/quadratischessondieren.html">Quadratisches Sondieren</a></li>
 				  </ul>
 				</li>
 			  </ul>
@@ -58,9 +58,9 @@
 
 		<main class="container content-center">
 		
-		<h1>GnomeSort</h1>
+		<h1>InsertionSort</h1>
 		
-		GnomeSort hat eine Laufzeit von <var><strong>O(n)</strong></var> im Best-Case und von <var><strong>O(n²)</strong></var> im Average- und Worst-Case.
+		InsertionSort hat eine Laufzeit von <var><strong>O(n)</strong></var> im Best-Case und von <var><strong>O(n²)</strong></var> im Average- und Worst-Case.
 		
 		<hr>
 		
@@ -73,7 +73,7 @@
 			<h3>Demo</h3>
 			<div id="array"></div>
 			<br>
-			<button type="button" class="btn btn-primary" onclick="gnomeSort()">Zufällige Zahlenfolge sortieren</button>
+			<button type="button" class="btn btn-primary" onclick="insertionSort()">Zufällige Zahlenfolge sortieren</button>
 
 			  </div>
 			  <!--Grid column-->
@@ -82,20 +82,15 @@
 					<h3>Pseudocode</h3>
 					
 					<div class="alert alert-warning" role="alert">
-						<strong>GnomeSort (Element A[])</strong><br/>
+						<strong>InsertionSort (Element A[])</strong><br/>
 							<small>1</small>&emsp;<strong>int</strong> n := A.length();<br/>
-							<small>2</small>&emsp;<strong>int</strong> i := 0;<br/>
-							<small>3</small>&emsp;<strong>while</strong> (i < n) <strong>do</strong><br/>
-							<small>4</small>	&emsp;&emsp;<strong>if</strong> (i == 0) <strong>then</strong><br/>
-							<small>5</small>	&emsp;&emsp;&emsp;i++;<br/>
-							<small>6</small>		&emsp;&emsp;<strong>end</strong><br/>
-							<small>7</small>	&emsp;&emsp;<strong>if</strong> (A[i].k >= A[i - 1].k) <strong>then</strong><br/>
-							<small>8</small>	&emsp;&emsp;&emsp;i++;<br/>
-							<small>9</small>		&emsp;&emsp;<strong>else</strong><br/>
-							<small>10</small>	&emsp;&emsp;&emsp;vertausche(A, i, i -1);<br/>
-							<small>11</small>	&emsp;&emsp;&emsp;i--;<br/>
-							<small>12</small>		&emsp;&emsp;<strong>end</strong><br/>
-							<small>13</small>		&emsp;<strong>end</strong><br/>
+							<small>2</small>&emsp;<strong>for</strong> (<strong>int</strong> i := 1; i < n; i++) <strong>do</strong><br/>
+							<small>3</small>	&emsp;&emsp;<strong>int</strong> j := i;<br/>
+							<small>4</small>	&emsp;&emsp;<strong>while</strong> ((j > 0) <strong>and</strong> (A[j].k < A[j - 1].k)) <strong>do</strong><br/>
+							<small>5</small>		&emsp;&emsp;&emsp;vertausche (A, j, j - 1);<br/>
+							<small>6</small>			&emsp;&emsp;&emsp;j--;<br/>
+							<small>7</small>		&emsp;&emsp;<strong>end</strong><br/>
+							<small>8</small>&emsp;<strong>end</strong><br/>
 					</div>
 			  </div>
 
@@ -115,8 +110,8 @@
 			</div>
 		</footer>
 		
-		<script src="dist/bootstrap/bootstrap.bundle.min.js"></script>
-		<script src="js/util.js"></script>
-		<script src="js/gnomesort.js"></script>
+		<script src="../dist/bootstrap/bootstrap.bundle.min.js"></script>
+		<script src="../js/util.js"></script>
+		<script src="../js/sorting/insertionsort.js"></script>
 	</body>
 </html>

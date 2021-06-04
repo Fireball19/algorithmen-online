@@ -6,9 +6,9 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 
 		<!-- Bootstrap CSS -->
-		<link rel="stylesheet" href="dist/bootstrap/bootstrap.min.css"/>
-		<link rel="stylesheet" href="css/navbar.css"/>
-		<link rel="stylesheet" href="css/array.css"/>
+		<link rel="stylesheet" href="../dist/bootstrap/bootstrap.min.css"/>
+		<link rel="stylesheet" href="../css/navbar.css"/>
+		<link rel="stylesheet" href="../css/array.css"/>
 
 		<title>Algorithmen - online</title>
 	</head>
@@ -22,7 +22,7 @@
 			<div class="collapse navbar-collapse" id="navbarCollapse">
 			  <ul class="navbar-nav">
 				<li class="nav-item">
-					<a class="nav-link" href="index.html">
+					<a class="nav-link" href="../index.html">
 					Übersicht
 					</a>
 				</li>
@@ -36,10 +36,10 @@
 					<li><a class="dropdown-item" href="gnomesort.html">GnomeSort</a></li>
 					<li><a class="dropdown-item" href="insertionsort.html">InsertionSort</a></li>
 					<li><a class="dropdown-item" href="bubblesort.html">BubbleSort</a></li>
-					<li><a class="dropdown-item" href="shakersort.html">ShakerSort</a></li>
+					<li><a class="dropdown-item active" href="#">ShakerSort</a></li>
 					<hr>
 					<li><a class="dropdown-item" href="quicksort.html">QuickSort</a></li>
-					<li><a class="dropdown-item active" href="#">HeapSort</a></li>
+					<li><a class="dropdown-item" href="heapsort.html">HeapSort</a></li>
 				  </ul>
 				</li>
 				<li class="nav-item dropdown">
@@ -47,8 +47,8 @@
 					Hashing
 				  </a>
 				  <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuLinkHashing">
-					<li><a class="dropdown-item" href="linearessondieren.html">Lineares Sondieren</a></li>
-					<li><a class="dropdown-item" href="quadratischessondieren.html">Quadratisches Sondieren</a></li>
+					<li><a class="dropdown-item" href="../hashing/linearessondieren.html">Lineares Sondieren</a></li>
+					<li><a class="dropdown-item" href="../hashing/quadratischessondieren.html">Quadratisches Sondieren</a></li>
 				  </ul>
 				</li>
 			  </ul>
@@ -58,9 +58,9 @@
 
 		<main class="container content-center">
 		
-		<h1>HeapSort</h1>
+		<h1>ShakerSort</h1>
 		
-		HeapSort hat eine Laufzeit von <var><strong>O(n log(n))</strong></var> im Best-, Average- und Worst-Case. Der initiale Aufbau hat zusätzlich eine Laufzeit von <var><strong>O(n)</strong></var>.
+		ShakerSort hat eine Laufzeit von <var><strong>O(n)</strong></var> im Best-Case und von <var><strong>O(n²)</strong></var> im Average- und Worst-Case.
 		
 		<hr>
 		
@@ -73,7 +73,7 @@
 			<h3>Demo</h3>
 			<div id="array"></div>
 			<br>
-			<button type="button" class="btn btn-primary" onclick="heapSort()">Zufällige Zahlenfolge sortieren</button>
+			<button type="button" class="btn btn-primary" onclick="shakerSort()">Zufällige Zahlenfolge sortieren</button>
 
 			  </div>
 			  <!--Grid column-->
@@ -82,29 +82,31 @@
 					<h3>Pseudocode</h3>
 					
 					<div class="alert alert-warning" role="alert">
-						<strong>int</strong> n := A.length();<br/>
-						<strong>HeapSort (Element A[], int n)</strong><br/>
-							<small>1</small>&emsp;<strong>for</strong> (<strong>int</strong> i := (n / 2) - 1; i >= 0; i--) <strong>do</strong><br/>
-							<small>2</small>&emsp;&emsp;versickere(A, i, n - 1);<br/>
-							<small>3</small>&emsp;<strong>end</strong><br/>
-							<small>4</small>&emsp;<strong>for</strong> (<strong>int</strong> i := n - 1; i > 0; i--) <strong>do</strong><br/>
-							<small>5</small>&emsp;&emsp;vertausche(A, i, 0);<br/>
-							<small>6</small>&emsp;&emsp;versickere(A, 0, i - 1);<br/>
-							<small>7</small>&emsp;<strong>end</strong><br/>
-						<br/>
-						<strong>versickere (Element A[], int i, int m)</strong><br/>
-						<small>1</small>&emsp;<strong>while</strong> (2 * i + 1 <= m) <strong>do</strong><br/>
-						<small>2</small>&emsp;&emsp;<strong>int</strong> j := 2 * i + 1;<br/>
-						<small>3</small>&emsp;&emsp;<strong>if</strong> ((2 * i + 2 <= m) <strong>and</strong> (A[2 * i + 1].k < A[2 * i + 2].k)) <strong>then</strong><br/>
-						<small>4</small>&emsp;&emsp;&emsp;j := 2 * i + 2;<br/>
-						<small>5</small>&emsp;&emsp;<strong>end</strong><br/>
-						<small>6</small>&emsp;&emsp;<strong>if</strong> (A[i].k < A[j].k) <strong>then</strong><br/>
-						<small>7</small>&emsp;&emsp;&emsp;vertausche(A, i, j);<br/>
-						<small>8</small>&emsp;&emsp;&emsp;i := j;<br/>
-						<small>9</small>&emsp;&emsp;<strong>else</strong><br/>
-						<small>10</small>&emsp;&emsp;&emsp;i := m;<br/>
-						<small>11</small>&emsp;&emsp;<strong>end</strong><br/>
-						<small>12</small>&emsp;<strong>end</strong><br/>
+						<strong>ShakerSort (Element A[])</strong><br/>
+							<small>1</small>&emsp;<strong>boolean</strong> vertauscht;<br/>
+							<small>2</small>&emsp;<strong>int</strong> m := -1;<br/>
+							<small>3</small>&emsp;<strong>int</strong> n := A.length() - 1;<br/>
+							<small>4</small>&emsp;<strong>do</strong><br/>
+							<small>5</small>	&emsp;&emsp;vertauscht := false;<br/>
+							<small>6</small>	&emsp;&emsp;m := m + 1;<br/>
+							<small>7</small>	&emsp;&emsp;<strong>for</strong> (<strong>int</strong> i := m; i < n; i++) <strong>do</strong><br/>
+							<small>8</small>		&emsp;&emsp;&emsp;<strong>if</strong> (A[i].k > A[i + 1].k) <strong>then</strong><br/>
+							<small>9</small>			&emsp;&emsp;&emsp;&emsp;vertausche (A, i, i + 1);<br/>
+							<small>10</small>			&emsp;&emsp;&emsp;&emsp;vertauscht := true;<br/>
+							<small>11</small>		&emsp;&emsp;&emsp;<strong>end</strong><br/>
+							<small>12</small>	&emsp;&emsp;<strong>end</strong><br/>
+							<small>13</small>	&emsp;&emsp;<strong>if</strong> (vertauscht == false) <strong>then</strong><br/>
+							<small>14</small>		&emsp;&emsp;&emsp;<strong>break</strong><br/>
+							<small>15</small>	&emsp;&emsp;<strong>end</strong><br/>
+							<small>16</small>	&emsp;&emsp;vertauscht := false;<br/>
+							<small>17</small>	&emsp;&emsp;n := n - 1;<br/>
+							<small>18</small>	&emsp;&emsp;<strong>for</strong> (<strong>int</strong> i := n - 1; i > m - 1; i--) <strong>do</strong><br/>
+							<small>19</small>		&emsp;&emsp;&emsp;<strong>if</strong> (A[i].k > A[i + 1].k) <strong>then</strong><br/>
+							<small>20</small>			&emsp;&emsp;&emsp;&emsp;vertausche (A, i, i + 1);<br/>
+							<small>21</small>			&emsp;&emsp;&emsp;&emsp;vertauscht := true;<br/>
+							<small>22</small>		&emsp;&emsp;&emsp;<strong>end</strong><br/>
+							<small>23</small>	&emsp;&emsp;<strong>end</strong><br/>
+							<small>24</small>&emsp;<strong>while</strong> (vertauscht == true);<br/>
 					</div>
 			  </div>
 
@@ -124,8 +126,8 @@
 			</div>
 		</footer>
 		
-		<script src="dist/bootstrap/bootstrap.bundle.min.js"></script>
-		<script src="js/util.js"></script>
-		<script src="js/heapsort.js"></script>
+		<script src="../dist/bootstrap/bootstrap.bundle.min.js"></script>
+		<script src="../js/util.js"></script>
+		<script src="../js/sorting/shakersort.js"></script>
 	</body>
 </html>
