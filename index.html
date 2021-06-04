@@ -134,6 +134,11 @@
 					<td><var><strong>k mod n</strong></var></td>
 					<td><var><strong>h(k), (h(k) + 1) mod n, (h(k) − 1) mod n, (h(k) + 4) mod n, (h(k) − 4) mod n, ...</strong></var></td>
 				</tr>
+				<tr>
+					<td>Double Hashing</td>
+					<td><var><strong>h_0(k) := k mod n,<br/>h_1(k) := 1 + (k mod (n − 2)),<br/>n ist Primzahl</strong></var></td>
+					<td><var><strong>h_0(k), (h_0(k) − h_1(k)) mod n, (h_0(k) − 2 · h_1(k)) mod n, ..., (h_0(k) − (n − 1) · h_1(k)) mod n</strong></var></td>
+				</tr>
 			</tbody>
 		</table>
 		
