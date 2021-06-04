@@ -4,6 +4,8 @@ async function selectionSort(delay = 250) {
 	
     var array = document.querySelectorAll(".array-element");
 	
+	spinningDemo();
+	
 	var n = array.length;
 	var m = 0;
 	for (var i = 0; i < n - 1; i++) {
@@ -41,4 +43,6 @@ async function selectionSort(delay = 250) {
 	
 	// change color of remaining sorted element
 	array[n - 1].style.backgroundColor = "#117733";
+	
+	stopSpinningDemo();
 }

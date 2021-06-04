@@ -4,6 +4,8 @@ async function bubbleSort(delay = 250) {
 	
     var array = document.querySelectorAll(".array-element");
 	
+	spinningDemo();
+	
 	var vertauscht;
 	var n = array.length;
 	do {
@@ -43,4 +45,6 @@ async function bubbleSort(delay = 250) {
 		array[n - 1].style.backgroundColor = "#117733";
 		n = n - 1;
 	}
+	
+	stopSpinningDemo();
 }

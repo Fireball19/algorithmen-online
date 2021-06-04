@@ -4,6 +4,8 @@ async function linearesSondieren(delay = 750) {
 	
     var hashtable = document.querySelectorAll(".hashtable-element");
 	
+	spinningDemo();
+	
 	var array = [];
 	for (var i = 0; i < 15; i++) {
 		array.push(randomNumber());
@@ -37,4 +39,6 @@ async function linearesSondieren(delay = 750) {
 			}
 		}
 	}
+	
+	stopSpinningDemo();
 }

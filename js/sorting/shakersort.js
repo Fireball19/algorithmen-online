@@ -4,6 +4,8 @@ async function shakerSort(delay = 250) {
 	
     var array = document.querySelectorAll(".array-element");
 	
+	spinningDemo();
+	
 	var vertauscht;
 	var m = -1;
 	var n = array.length - 1;
@@ -81,4 +83,6 @@ async function shakerSort(delay = 250) {
 		array[n].style.backgroundColor = "#117733";
 		n = n - 1;
 	}
+	
+	stopSpinningDemo();
 }
