@@ -27,10 +27,10 @@ function generateArray() {
     }
 }
 
-function generateHashtable() {
+function generateHashtable(size) {
 	// delete old hashtable
 	hashtable.innerHTML = '';
-    for (var i = 0; i < 15; i++) {
+    for (var i = 0; i < size; i++) {
         // create div for element
         var hashtableElement = document.createElement("div");
   

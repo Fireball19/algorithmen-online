@@ -1,13 +1,13 @@
-async function linearesSondieren(delay = 750) {
+async function doubleHashing(delay = 750) {
 	// generate hashtable with random elements
-	generateHashtable(15);
+	generateHashtable(13);
 	
     var hashtable = document.querySelectorAll(".hashtable-element");
 	
 	spinningDemo();
 	
 	var array = [];
-	for (var i = 0; i < 15; i++) {
+	for (var i = 0; i < 10; i++) {
 		array.push(randomNumber());
 	}
 	
@@ -15,7 +15,9 @@ async function linearesSondieren(delay = 750) {
 		var eingefuegt = false;
 		var counter = 0;
 		while (eingefuegt == false) {
-			var pos = mod((array[j] + counter), 15);
+			var h0 = mod(array[j], 13);
+			var h1 = 1 + mod(array[j], 11);
+			var pos = mod(h0 - counter * h1, 13);
 		
 			// change the color of elements to comparing color
 			hashtable[pos].style.backgroundColor = "#CC6677";
@@ -35,7 +37,7 @@ async function linearesSondieren(delay = 750) {
 			} else {
 				// change the color of compared elements to previous (hashed) color
 				hashtable[pos].style.backgroundColor = "#117733";
-				counter--;
+				counter++;
 			}
 		}
 	}

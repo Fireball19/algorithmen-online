@@ -1,6 +1,6 @@
 async function quadratischesSondieren(delay = 750) {
 	// generate hashtable with random elements
-	generateHashtable();
+	generateHashtable(15);
 	
     var hashtable = document.querySelectorAll(".hashtable-element");
 	
