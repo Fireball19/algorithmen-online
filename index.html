@@ -63,7 +63,7 @@
 		<table class="table table-bordered">
 			<thead class="table-dark">
 				<tr>
-					<th scope="col">Algorithmus</th>
+					<th scope="col">Sortieralgorithmus</th>
 					<th>Best-Case</th>
 					<th>Average-Case</th>
 					<th>Worst-Case</th>
@@ -111,6 +111,28 @@
 					<td><var><strong>O(n log(n)) + O(n)</</strong></var></td>
 					<td><var><strong>O(n log(n)) + O(n)</</strong></var></td>
 					<td><var><strong>O(n log(n)) + O(n)</strong></var></td>
+				</tr>
+			</tbody>
+		</table>
+		
+		<table class="table table-bordered">
+			<thead class="table-dark">
+				<tr>
+					<th scope="col">Hashingalgorithmus</th>
+					<th>Hashfunktion</th>
+					<th>Sondierungsfolge</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>Lineares Sondieren</td>
+					<td><var><strong>k mod n</strong></var></td>
+					<td><var><strong>h(k), h(k) − 1, h(k) − 2, ..., 0, n − 1, ..., h(k) + 1</strong></var></td>
+				</tr>
+				<tr>
+					<td>Quadratisches Sondieren</td>
+					<td><var><strong>k mod n</strong></var></td>
+					<td><var><strong>h(k), (h(k) + 1) mod n, (h(k) − 1) mod n, (h(k) + 4) mod n, (h(k) − 4) mod n, ...</strong></var></td>
 				</tr>
 			</tbody>
 		</table>
