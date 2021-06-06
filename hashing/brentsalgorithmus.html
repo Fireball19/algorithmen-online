@@ -50,11 +50,11 @@
 					Hashing
 				  </a>
 				  <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuLinkHashing">
-					<li><a class="dropdown-item active" href="#">Lineares Sondieren</a></li>
+					<li><a class="dropdown-item" href="linearessondieren.html">Lineares Sondieren</a></li>
 					<li><a class="dropdown-item" href="quadratischessondieren.html">Quadratisches Sondieren</a></li>
 					<hr>
 					<li><a class="dropdown-item" href="doublehashing.html">Double Hashing</a></li>
-					<li><a class="dropdown-item" href="brentsalgorithmus.html">Brents Algorithmus</a></li>
+					<li><a class="dropdown-item active" href="#">Brents Algorithmus</a></li>
 				  </ul>
 				</li>
 			  </ul>
@@ -64,9 +64,9 @@
 
 		<main class="container content-center">
 		
-		<h1>Lineares Sondieren</h1>
+		<h1>Brents Algorithmus</h1>
 		
-		Lineares Sondieren neigt zur primären Häufung, es kommt also zur Bildung von Clustern, da lange Teilstücke schneller wachsen als kürzere.
+		Brents Algorithmus verwendet für die Sondierungsfolge eine zweite Hashfunktion.
 		
 		<hr>
 		
@@ -79,7 +79,7 @@
 			<h3>Demo</h3>
 			<div id="hashtable"></div>
 			<br>
-			<button type="button" class="btn btn-primary" onclick="linearesSondieren()" id="demo-btn">
+			<button type="button" class="btn btn-primary" onclick="brentsAlgorithmus()" id="demo-btn">
 			<span class="spinner-border spinner-border-sm visually-hidden" role="status" aria-hidden="true" id="demo-spinner"></span>
 			<span class="visually-hidden" id="demo-spinner-text">hashe...</span>
 			<span id="demo-btn-text">Zufällige Zahlenfolge hashen</span>
@@ -92,10 +92,14 @@
 					<h3>Hashfunktion</h3>
 					
 					<div class="alert alert-warning" role="alert">
-						<strong>Lineares Sondieren</strong><br/>
-						n := Größe Hashtabelle<br/>
-						<strong>h(k)</strong> := k mod n<br/>
-						<strong>Sondierungsfolge</strong> := h(k), h(k) − 1, h(k) − 2, ..., 0, n − 1, ..., h(k) + 1<br/>
+						<strong>Brents Algorithmus</strong><br/>
+						n := Größe Hashtabelle, ist Primzahl<br/>
+						<strong>h_0(k)</strong> := k mod n<br/>
+						<strong>h_1(k)</strong> := 1 + (k mod (n − 2))<br/>
+						<strong>Sondierungsfolge</strong> := Versuche einfügen bei i := h_0(k), sonst<br/>
+						betrache b_0 := (i - h_1(k)) mod n, sonst<br/>
+						betrache b_1 := (i - h_1(k_1)) mod n, wobei k_1 := Schlüssel auf Position i, setze k auf Position i und k_1 auf Position b_1, sonst<br/>
+						wiederhole ab b_0 mit i := b.
 					</div>
 			  </div>
 
@@ -117,6 +121,6 @@
 		
 		<script src="../dist/bootstrap/bootstrap.bundle.min.js"></script>
 		<script src="../js/util.js"></script>
-		<script src="../js/hashing/linearessondieren.js"></script>
+		<script src="../js/hashing/brentsalgorithmus.js"></script>
 	</body>
 </html>
