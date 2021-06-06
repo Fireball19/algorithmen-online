@@ -1,11 +1,11 @@
-var array = document.getElementById("array");
-var hashtable = document.getElementById("hashtable");
 var demoSpinner = document.getElementById("demo-spinner");
 var demoSpinnerText = document.getElementById("demo-spinner-text");
 var demoBtn = document.getElementById("demo-btn");
 var demoBtnText = document.getElementById("demo-btn-text");
   
-function generateArray() {
+function generateArray(arrayDivId) {
+	var array = document.getElementById(arrayDivId);
+	
 	// delete old array
 	array.innerHTML = '';
     for (var i = 0; i < 15; i++) {
@@ -27,7 +27,9 @@ function generateArray() {
     }
 }
 
-function generateHashtable(size) {
+function generateHashtable(hashtableDivId, size) {
+	var hashtable = document.getElementById(hashtableDivId);
+	
 	// delete old hashtable
 	hashtable.innerHTML = '';
     for (var i = 0; i < size; i++) {

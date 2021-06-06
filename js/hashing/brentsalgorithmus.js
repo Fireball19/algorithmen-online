@@ -1,6 +1,6 @@
 async function brentsAlgorithmus(delay = 750) {
 	// generate hashtable with random elements
-	generateHashtable(13);
+	generateHashtable("hashtable", 13);
 	
     var hashtable = document.querySelectorAll(".hashtable-element");
 	

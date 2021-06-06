@@ -1,6 +1,6 @@
 async function heapSort() {
 	// generate array with random elements
-	generateArray();
+	generateArray("array");
 
 	var array = document.querySelectorAll(".array-element");
 	

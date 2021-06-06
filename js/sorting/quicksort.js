@@ -4,7 +4,7 @@ var counter = 0;
 
 async function quickSort() {
 	// generate array with random elements
-	generateArray();
+	generateArray("array");
 	
 	var array = document.querySelectorAll(".array-element");
 
