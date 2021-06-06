@@ -1,6 +1,6 @@
 async function insertionSort(delay = 250) {
 	// generate array with random elements
-	generateArray();
+	generateArray("array");
 	
     var array = document.querySelectorAll(".array-element");
 	
