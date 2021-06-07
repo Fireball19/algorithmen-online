@@ -7,6 +7,10 @@ function randomNumber() {
 	return Math.ceil(Math.random() * 100);
 }
 
+function randomChar() {
+	return String.fromCharCode(Math.ceil(Math.random() * 65));
+}
+
 function mod(x, m) {
     return (x % m + m) % m;
 }
