@@ -1,7 +1,7 @@
 async function naiveSuche(delay = 250) {
 	// generate array with random elements
-	generateString("string", 15);
-	generatePattern("pattern", 4);
+	generatePattern("pattern", 4, "DEMO");
+	generateString("string", 15, "DEMO");
 	
     var string = document.querySelectorAll(".string-element");
 	var pattern = document.querySelectorAll(".pattern-element");
@@ -10,10 +10,7 @@ async function naiveSuche(delay = 250) {
 	
 	var n = string.length;
 	var m = pattern.length;
-	
-	console.log(n);
-	console.log(m);
-	
+
 	spinningDemo();
 	
 	if ((m > 0) && (n >= m)) {
@@ -45,7 +42,9 @@ async function naiveSuche(delay = 250) {
 		}
 		
 		if (j == m) {
-			ausgabe.innerHTML = "Ausgabe: Pattern gerfunden bei: " + i;
+			ausgabe.innerHTML = "Ausgabe: Pattern gerfunden bei Index: " + i;
+			stopSpinningDemo();
+			return;
 		}
 	}
 	
