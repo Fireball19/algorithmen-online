@@ -7,6 +7,13 @@ function randomNumber() {
 	return Math.ceil(Math.random() * 100);
 }
 
+function randomChar() {
+	var chars = ["A", "B", "C", "D", "E", "F", "G",
+	"H", "I", "J", "K", "L", "M", "N", "O", "P", "Q",
+	"R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
+	return chars[Math.ceil(Math.random() * 25)];
+}
+
 function mod(x, m) {
     return (x % m + m) % m;
 }
