@@ -42,7 +42,7 @@ async function naiveSuche(delay = 250) {
 		}
 		
 		if (j == m) {
-			ausgabe.innerHTML = "Ausgabe: Pattern gerfunden bei Index: " + i;
+			ausgabe.innerHTML = "Ausgabe: Pattern gefunden bei Index: " + i;
 			stopSpinningDemo();
 			return;
 		}
