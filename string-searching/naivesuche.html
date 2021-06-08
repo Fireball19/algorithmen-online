@@ -84,7 +84,7 @@
 		
 		<h1>Naive Suche</h1>
 		
-		Naive Suche hat eine Laufzeit von <var><strong>O(n)</strong></var> im Best-Case und von <var><strong>O(n²)</strong></var> im Average- und Worst-Case.
+		Naive Suche hat eine Laufzeit von <var><strong>O(n · m)</strong></var> im Worst-Case.
 		
 		<hr>
 		
@@ -112,19 +112,25 @@
 					<h3>Pseudocode</h3>
 					
 					<div class="alert alert-warning" role="alert">
-						<strong>Naive Suche (Element A[])</strong><br/>
-							<small>1</small>&emsp;<strong>boolean</strong> vertauscht;<br/>
-							<small>2</small>&emsp;<strong>int</strong> n := A.length();<br/>
-							<small>3</small>&emsp;<strong>do</strong><br/>
-							<small>4</small>	&emsp;&emsp;vertauscht := false;<br/>
-							<small>5</small>	&emsp;&emsp;<strong>for</strong> (<strong>int</strong> i := 0; i < n − 1; i++) <strong>do</strong><br/>
-							<small>6</small>		&emsp;&emsp;&emsp;<strong>if</strong> (A[i].k > A[i + 1].k) <strong>then</strong><br/>
-							<small>7</small>			&emsp;&emsp;&emsp;&emsp;vertausche (A, i, i + 1);<br/>
-							<small>8</small>			&emsp;&emsp;&emsp;&emsp;vertauscht := true;<br/>
-							<small>9</small>		&emsp;&emsp;&emsp;<strong>end</strong><br/>
-							<small>10</small>	&emsp;&emsp;<strong>end</strong><br/>
-							<small>11</small>	&emsp;&emsp;n := n - 1;<br/>
-							<small>12</small>&emsp;<strong>while</strong> (vertauscht == true);<br/>
+						<strong>int</strong> n := T.length();<br/>
+						<strong>int</strong> m := P.length();<br/>
+						<strong>Naive Suche (String T[], int n, String P[], int m)</strong><br/>
+							<small>1</small>&emsp;<strong>if</strong> ((m > 0) <strong>and</strong> (n >= m)) <strong>then</strong><br/>
+							<small>2</small>&emsp;&emsp;<strong>int</strong> i := 0;<br/>
+							<small>3</small>&emsp;&emsp;<strong>int</strong> j := 0;<br/>
+							<small>4</small>&emsp;&emsp;<strong>while</strong> ((i <= n - m) <strong>and</strong> (j <= m - 1)) <strong>do</strong><br/>
+							<small>5</small>&emsp;&emsp;&emsp;<strong>if</strong> (T[i + j] == P[j]) <strong>then</strong><br/>
+							<small>6</small>&emsp;&emsp;&emsp;&emsp;j++;<br/>
+							<small>7</small>&emsp;&emsp;&emsp;<strong>else</strong><br/>
+							<small>8</small>&emsp;&emsp;&emsp;&emsp;i++;<br/>
+							<small>9</small>&emsp;&emsp;&emsp;&emsp;j := 0;<br/>
+							<small>10</small>&emsp;&emsp;&emsp;<strong>end</strong><br/>
+							<small>11</small>&emsp;&emsp;<strong>end</strong><br/>
+							<small>12</small>&emsp;&emsp;<strong>if</strong> (j == m) <strong>then</strong><br/>
+							<small>13</small>&emsp;&emsp;&emsp;<strong>return</strong> i;<br/>
+							<small>14</small>&emsp;&emsp;<strong>end</strong><br/>
+							<small>15</small>&emsp;<strong>end</strong><br/>
+							<small>14</small>&emsp;<strong>return</strong> n;
 					</div>
 			  </div>
 
