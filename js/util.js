@@ -2,6 +2,8 @@ var demoSpinner = document.getElementById("demo-spinner");
 var demoSpinnerText = document.getElementById("demo-spinner-text");
 var demoBtn = document.getElementById("demo-btn");
 var demoBtnText = document.getElementById("demo-btn-text");
+var demoLogDiv = document.getElementById("demo-log-div");
+var demoLogCheckbox = document.getElementById("checkbox-demo-log");
 
 function randomNumber() {
 	return Math.ceil(Math.random() * 100);
@@ -16,6 +18,15 @@ function randomChar() {
 
 function mod(x, m) {
     return (x % m + m) % m;
+}
+
+function checkboxDemoLog() {
+	demoLogCheckbox.blur();
+	if (demoLogCheckbox.checked == true){
+		demoLogDiv.classList.remove("visually-hidden");
+	} else {
+		demoLogDiv.classList.add("visually-hidden");
+  }
 }
 
 function spinningDemo() {
