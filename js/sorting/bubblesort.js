@@ -1,6 +1,9 @@
 var log = document.getElementById("demo-log");
 
 async function bubbleSort(delay = 250) {
+	//delete old log
+	log.innerHTML = '';
+	
 	// generate array with random elements
 	generateArray("array");
 	
