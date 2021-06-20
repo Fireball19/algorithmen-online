@@ -56,3 +56,27 @@ function generatePattern(stringDivId, size, string) {
         pattern.appendChild(patternElement);
     }
 }
+
+function generateNextArray(arrayDivId, next) {
+	var array = document.getElementById(arrayDivId);
+	
+	// delete old array
+	array.innerHTML = '';
+    for (var i = 0; i < next.length; i++) {
+        var value = next[i];
+  
+        // create div for element
+        var arrayElement = document.createElement("div");
+  
+        // add style and label to element
+		arrayElement.classList.add("next-element");
+        arrayElement.style.height = `${30}px`;
+        arrayElement.style.transform = `translate(${i * 30}px)`;
+        var arrayElementLabel = document.createElement("label");
+        arrayElementLabel.classList.add("next-element-id");
+        arrayElementLabel.innerText = value;
+  
+        arrayElement.appendChild(arrayElementLabel);
+        array.appendChild(arrayElement);
+    }
+}
