@@ -3,6 +3,18 @@
     width: 500px;
     position: relative;
 }
+
+#hashtable1 {
+    height: 60px;
+    width: 500px;
+    position: relative;
+}
+
+#hashtable2 {
+    height: 60px;
+    width: 500px;
+    position: relative;
+}
   
 .hashtable-element {
     width: 28px;
