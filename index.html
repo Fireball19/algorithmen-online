@@ -54,6 +54,8 @@
 					<hr>
 					<li><a class="dropdown-item" href="hashing/doublehashing.html">Double Hashing</a></li>
 					<li><a class="dropdown-item" href="hashing/brentsalgorithmus.html">Brents Algorithmus</a></li>
+					<hr>
+					<li><a class="dropdown-item" href="hashing/kuckuckshashing.html">Kuckucks-Hashing</a></li>
 				  </ul>
 				</li>
 				<li class="nav-item dropdown">
@@ -167,9 +169,16 @@
 					<td>Brents Algorithmus</td>
 					<td><var><strong>h_0(k) := k mod n,<br/>h_1(k) := 1 + (k mod (n − 2)),<br/>n ist Primzahl</strong></var></td>
 					<td><var><strong>Versuche einfügen bei i := h_0(k), sonst<br/>
-						betrache b_0 := (i - h_1(k)) mod n, sonst<br/>
-						betrache b_1 := (i - h_1(k_1)) mod n, wobei k_1 := Schlüssel auf Position i, setze k auf Position i und k_1 auf Position b_1, sonst<br/>
+						betrachte b_0 := (i - h_1(k)) mod n, sonst<br/>
+						betrachte b_1 := (i - h_1(k_1)) mod n, wobei k_1 := Schlüssel auf Position i, setze k auf Position i und k_1 auf Position b_1, sonst<br/>
 						wiederhole ab b_0 mit i := b.</strong></var></td>
+				</tr>
+				<tr>
+					<td>Kuckucks-Hashing</td>
+					<td><var><strong>h_0(k) := k mod n,<br/>h_1(k) := 1 + (k mod (n − 2)),<br/>n ist Primzahl</strong></var></td>
+					<td><var><strong>Versuche einfügen bei h_0(k) in T_0, sonst<br/>
+						betrachte h_1(k) in T_1, war der Platz in T_1 mit k_1 belegt, dann speichere k_1 bei h_0(k_1) in T_0, war der Platz in T_0 ebenfalls mit k_2 belegt, dann speichere k_2 bei h_1(k_2) in T_1, usw. ..,<br/>
+						kommt es dabei zu einem Zyklus bilde zwei neue größere Hashtabellen.</strong></var></td>
 				</tr>
 			</tbody>
 		</table>
