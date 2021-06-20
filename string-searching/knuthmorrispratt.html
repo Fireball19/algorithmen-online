@@ -11,7 +11,7 @@
 		<!-- Bootstrap CSS -->
 		<link rel="stylesheet" href="../dist/bootstrap/bootstrap.min.css"/>
 		<link rel="stylesheet" href="../css/navbar.css"/>
-		<link rel="stylesheet" href="../css/array.css"/>
+		<link rel="stylesheet" href="../css/string.css"/>
 
 		<title>Algorithmen - online</title>
 	</head>
@@ -30,19 +30,19 @@
 					</a>
 				</li>
 				<li class="nav-item dropdown">
-				  <a class="nav-link dropdown-toggle active" href="#" id="navbarDarkDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+				  <a class="nav-link dropdown-toggle" href="#" id="navbarDarkDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
 					Sortieren
 				  </a>
 				  <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuLink">
-					<li><a class="dropdown-item" href="selectionsort.html">SelectionSort</a></li>
+					<li><a class="dropdown-item" href="../sorting/selectionsort.html">SelectionSort</a></li>
 					<hr>
-					<li><a class="dropdown-item" href="gnomesort.html">GnomeSort</a></li>
-					<li><a class="dropdown-item" href="insertionsort.html">InsertionSort</a></li>
-					<li><a class="dropdown-item active" href="#">BubbleSort</a></li>
-					<li><a class="dropdown-item" href="shakersort.html">ShakerSort</a></li>
+					<li><a class="dropdown-item" href="../sorting/gnomesort.html">GnomeSort</a></li>
+					<li><a class="dropdown-item" href="../sorting/insertionsort.html">InsertionSort</a></li>
+					<li><a class="dropdown-item" href="../sorting/bubblesort.html">BubbleSort</a></li>
+					<li><a class="dropdown-item" href="../sorting/shakersort.html">ShakerSort</a></li>
 					<hr>
-					<li><a class="dropdown-item" href="quicksort.html">QuickSort</a></li>
-					<li><a class="dropdown-item" href="heapsort.html">HeapSort</a></li>
+					<li><a class="dropdown-item" href="../sorting/quicksort.html">QuickSort</a></li>
+					<li><a class="dropdown-item" href="../sorting/heapsort.html">HeapSort</a></li>
 				  </ul>
 				</li>
 				<li class="nav-item dropdown">
@@ -60,12 +60,12 @@
 				  </ul>
 				</li>
 				<li class="nav-item dropdown">
-				  <a class="nav-link dropdown-toggle" href="#" id="navbarDarkDropdownMenuLinkStringSearching" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+				  <a class="nav-link dropdown-toggle active" href="#" id="navbarDarkDropdownMenuLinkStringSearching" role="button" data-bs-toggle="dropdown" aria-expanded="false">
 					String Searching
 				  </a>
 				  <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuLinkStringSearching">
-					<li><a class="dropdown-item" href="../string-searching/naivesuche.html">Naive Suche</a></li>
-					<li><a class="dropdown-item" href="../string-searching/knuthmorrispratt.html">Knuth-Morris-Pratt</a></li>
+					<li><a class="dropdown-item" href="naivesuche.html">Naive Suche</a></li>
+					<li><a class="dropdown-item active" href="#">Knuth-Morris-Pratt</a></li>
 				  </ul>
 				</li>
 			  </ul>
@@ -85,9 +85,9 @@
 			</div>
 		</noscript>
 		
-		<h1>BubbleSort</h1>
+		<h1>Knuth-Morris-Pratt</h1>
 		
-		BubbleSort hat eine Laufzeit von <var><strong>O(n)</strong></var> im Best-Case und von <var><strong>O(n²)</strong></var> im Average- und Worst-Case.
+		Knuth-Morris-Pratt hat eine Laufzeit von <var><strong>O(n + m)</strong></var>.
 		
 		<hr>
 		
@@ -98,27 +98,17 @@
 			  <div class="col-md-6">
 
 			<h3>Demo</h3>
-			<div id="array"></div>
+			<div><span id="next-title"></span></div>
+			<div id="next"></div>
+			<div id="string"></div>
+			<div id="pattern"></div>
+			<div><span id="demo-ausgabe"></span></div>
 			<br>
-			<button type="button" class="btn btn-primary" onclick="bubbleSort()" id="demo-btn">
+			<button type="button" class="btn btn-primary" onclick="knuthMorrisPratt()" id="demo-btn">
 			<span class="spinner-border spinner-border-sm visually-hidden" role="status" aria-hidden="true" id="demo-spinner"></span>
-			<span class="visually-hidden" id="demo-spinner-text">sortiere...</span>
-			<span id="demo-btn-text">Zufällige Zahlenfolge sortieren</span>
+			<span class="visually-hidden" id="demo-spinner-text">suche...</span>
+			<span id="demo-btn-text">Zufälliges Pattern suchen</span>
 			</button>
-			
-			<div class="form-check form-switch">
-			  <input class="form-check-input" type="checkbox" id="checkbox-demo-log" onclick="checkboxDemoLog()">
-			  <label class="form-check-label" for="checkbox-demo-log">Log sichtbar</label>
-			</div>
-
-			<br>
-			
-			<div class="visually-hidden" id="demo-log-div">
-				<h3>Demo Log</h3>
-				<div class="alert alert-secondary" role="alert">
-					<span id="demo-log"></span>
-				</div>
-			</div>
 
 			  </div>
 			  <!--Grid column-->
@@ -127,19 +117,42 @@
 					<h3>Pseudocode</h3>
 					
 					<div class="alert alert-warning" role="alert">
-						<strong>BubbleSort (Element A[])</strong><br/>
-							<small>1</small>&emsp;<strong>boolean</strong> vertauscht;<br/>
-							<small>2</small>&emsp;<strong>int</strong> n := A.length();<br/>
-							<small>3</small>&emsp;<strong>do</strong><br/>
-							<small>4</small>	&emsp;&emsp;vertauscht := false;<br/>
-							<small>5</small>	&emsp;&emsp;<strong>for</strong> (<strong>int</strong> i := 0; i < n − 1; i++) <strong>do</strong><br/>
-							<small>6</small>		&emsp;&emsp;&emsp;<strong>if</strong> (A[i].k > A[i + 1].k) <strong>then</strong><br/>
-							<small>7</small>			&emsp;&emsp;&emsp;&emsp;vertausche (A, i, i + 1);<br/>
-							<small>8</small>			&emsp;&emsp;&emsp;&emsp;vertauscht := true;<br/>
-							<small>9</small>		&emsp;&emsp;&emsp;<strong>end</strong><br/>
-							<small>10</small>	&emsp;&emsp;<strong>end</strong><br/>
-							<small>11</small>	&emsp;&emsp;n := n - 1;<br/>
-							<small>12</small>&emsp;<strong>while</strong> (vertauscht == true);<br/>
+						<strong>int</strong> n := T.length();<br/>
+						<strong>int</strong> m := P.length();<br/>
+						<strong>Knuth-Morris-Pratt (String T[], int n, String P[], int m, int next[])</strong><br/>
+							<small>1</small>&emsp;<strong>if</strong> ((m > 0) <strong>and</strong> (n >= m)) <strong>then</strong><br/>
+							<small>2</small>&emsp;&emsp;<strong>int</strong> i := 0;<br/>
+							<small>3</small>&emsp;&emsp;<strong>int</strong> j := 0;<br/>
+							<small>4</small>&emsp;&emsp;<strong>while</strong> ((i < n) <strong>and</strong> (j < m)) <strong>do</strong><br/>
+							<small>5</small>&emsp;&emsp;&emsp;<strong>if</strong> ((j == -1) <strong>or</strong> (T[i] == P[j])) <strong>then</strong><br/>
+							<small>6</small>&emsp;&emsp;&emsp;&emsp;i++;<br/>
+							<small>7</small>&emsp;&emsp;&emsp;&emsp;j++<br/>
+							<small>8</small>&emsp;&emsp;&emsp;<strong>else</strong><br/>
+							<small>9</small>&emsp;&emsp;&emsp;&emsp;j := next[j];<br/>
+							<small>10</small>&emsp;&emsp;&emsp;<strong>end</strong><br/>
+							<small>11</small>&emsp;&emsp;<strong>end</strong><br/>
+							<small>12</small>&emsp;&emsp;<strong>if</strong> (j == m) <strong>then</strong><br/>
+							<small>13</small>&emsp;&emsp;&emsp;<strong>return</strong> (i - m);<br/>
+							<small>14</small>&emsp;&emsp;<strong>end</strong><br/>
+							<small>15</small>&emsp;<strong>end</strong><br/>
+							<small>16</small>&emsp;<strong>return</strong> n;<br/>
+							<br/>
+
+						<strong>Berechne next-Array (int next[], String P[], int m)</strong><br/>
+							<small>1</small>&emsp;<strong>if</strong> (m > 0) <strong>then</strong><br/>
+							<small>2</small>&emsp;&emsp;<strong>int</strong> i := 0;<br/>
+							<small>3</small>&emsp;&emsp;<strong>int</strong> j := -1;<br/>
+							<small>4</small>&emsp;&emsp;next[0] := -1;<br/>
+							<small>5</small>&emsp;&emsp;<strong>while</strong> (i < m - 1) <strong>do</strong><br/>
+							<small>6</small>&emsp;&emsp;&emsp;<strong>if</strong> ((j == -1) <strong>or</strong> (P[i] == P[j])) <strong>then</strong><br/>
+							<small>7</small>&emsp;&emsp;&emsp;&emsp;i++;<br/>
+							<small>8</small>&emsp;&emsp;&emsp;&emsp;j++;<br/>
+							<small>9</small>&emsp;&emsp;&emsp;&emsp;next[i] := j;<br/>
+							<small>10</small>&emsp;&emsp;&emsp;<strong>else</strong><br/>
+							<small>11</small>&emsp;&emsp;&emsp;&emsp;j := next[j];<br/>
+							<small>12</small>&emsp;&emsp;&emsp;<strong>end</strong><br/>
+							<small>13</small>&emsp;&emsp;<strong>end</strong><br/>
+							<small>14</small>&emsp;<strong>end</strong><br/>
 					</div>
 			  </div>
 
@@ -161,7 +174,7 @@
 		
 		<script src="../dist/bootstrap/bootstrap.bundle.min.js"></script>
 		<script src="../js/util.js"></script>
-		<script src="../js/sorting/bubblesort.js"></script>
-		<script src="../js/sorting/util.js"></script>
+		<script src="../js/string-searching/knuthmorrispratt.js"></script>
+		<script src="../js/string-searching/util.js"></script>
 	</body>
 </html>
