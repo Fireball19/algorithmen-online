@@ -9,6 +9,18 @@ function randomNumber() {
 	return Math.ceil(Math.random() * 100);
 }
 
+function uniqueRandomNumbers(n) {
+	var numbers = [];
+		while (numbers.length < n) {
+   			var r = randomNumber();
+    		if (numbers.indexOf(r) == -1) {
+				numbers.push(r);
+			}
+	}
+
+	return numbers;
+}
+
 function randomChar() {
 	var chars = ["A", "B", "C", "D", "E", "F", "G",
 	"H", "I", "J", "K", "L", "M", "N", "O", "P", "Q",

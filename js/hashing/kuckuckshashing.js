@@ -8,10 +8,7 @@ async function kuckucksHashing(delay = 750) {
 
 	spinningDemo();
 	
-	var array = [];
-	for (var i = 0; i < 10; i++) {
-		array.push(randomNumber());
-	}
+	var array = uniqueRandomNumbers(10);
 
 	for (var j = 0; j < 10; j++) {
 		var eingefuegt = false;
