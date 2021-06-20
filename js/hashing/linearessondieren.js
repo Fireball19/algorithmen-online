@@ -6,10 +6,7 @@ async function linearesSondieren(delay = 750) {
 	
 	spinningDemo();
 	
-	var array = [];
-	for (var i = 0; i < 15; i++) {
-		array.push(randomNumber());
-	}
+	var array = uniqueRandomNumbers(15);
 	
 	for (var j = 0; j < 10; j++) {
 		var eingefuegt = false;
