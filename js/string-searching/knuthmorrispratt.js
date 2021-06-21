@@ -49,7 +49,7 @@ async function knuthMorrisPratt(delay = 250) {
 		}
 
 		if (j == m) {
-			ausgabe.innerHTML = "Ausgabe: Pattern gefunden bei Index: " + i;
+			ausgabe.innerHTML = "Ausgabe: Pattern gefunden bei Index: " + (i - m);
 			stopSpinningDemo();
 			return;
 		}
