@@ -42,7 +42,6 @@ async function merge(array, l, m, r, delay = 500) {
 	}
 	
 	tmp.sort(compare);
-	console.log(tmp);
 	
 	// wait for .5 seconds
 	await new Promise((resolve) =>
