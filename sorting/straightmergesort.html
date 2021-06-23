@@ -36,7 +36,7 @@
 				  <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuLink">
 					<li><a class="dropdown-item" href="selectionsort.html">SelectionSort</a></li>
 					<hr>
-					<li><a class="dropdown-item active" href="#">GnomeSort</a></li>
+					<li><a class="dropdown-item" href="gnomesort.html">GnomeSort</a></li>
 					<li><a class="dropdown-item" href="insertionsort.html">InsertionSort</a></li>
 					<li><a class="dropdown-item" href="bubblesort.html">BubbleSort</a></li>
 					<li><a class="dropdown-item" href="shakersort.html">ShakerSort</a></li>
@@ -44,8 +44,8 @@
 					<li><a class="dropdown-item" href="quicksort.html">QuickSort</a></li>
 					<li><a class="dropdown-item" href="heapsort.html">HeapSort</a></li>
 					<hr>
-					<li><a class="dropdown-item" href="mergesort.html">2-Wege-MergeSort</a></li>
-					<li><a class="dropdown-item" href="straightmergesort.html">Reines 2-Wege-Mergesort</a></li>
+					<li><a class="dropdown-item" href="mergesort.html">2-Wege-Mergesort</a></li>
+					<li><a class="dropdown-item active" href="#">Reines 2-Wege-Mergesort</a></li>
 				  </ul>
 				</li>
 				<li class="nav-item dropdown">
@@ -88,9 +88,9 @@
 			</div>
 		</noscript>
 		
-		<h1>GnomeSort</h1>
+		<h1>Reines 2-Wege-Mergesort</h1>
 		
-		GnomeSort hat eine Laufzeit von <var><strong>O(n)</strong></var> im Best-Case und von <var><strong>O(n²)</strong></var> im Average- und Worst-Case.
+		Reines 2-Wege-Mergesort hat eine Laufzeit im Best-, Average- und Worst-Case von <var><strong>O(n log(n))</strong></var>.
 		
 		<hr>
 		
@@ -103,25 +103,11 @@
 			<h3>Demo</h3>
 			<div id="array"></div>
 			<br>
-			<button type="button" class="btn btn-primary" onclick="gnomeSort()" id="demo-btn">
+			<button type="button" class="btn btn-primary" onclick="straightMergeSort()" id="demo-btn">
 			<span class="spinner-border spinner-border-sm visually-hidden" role="status" aria-hidden="true" id="demo-spinner"></span>
 			<span class="visually-hidden" id="demo-spinner-text">sortiere...</span>
 			<span id="demo-btn-text">Zufällige Zahlenfolge sortieren</span>
 			</button>
-
-			<div class="form-check form-switch">
-				<input class="form-check-input" type="checkbox" id="checkbox-demo-log" onclick="checkboxDemoLog()">
-				<label class="form-check-label" for="checkbox-demo-log">Log sichtbar</label>
-			  </div>
-  
-			  <br>
-			  
-			  <div class="visually-hidden" id="demo-log-div">
-				  <h3>Demo Log</h3>
-				  <div class="alert alert-secondary" role="alert">
-					  <span id="demo-log"></span>
-				  </div>
-			  </div>
 
 			  </div>
 			  <!--Grid column-->
@@ -130,20 +116,23 @@
 					<h3>Pseudocode</h3>
 					
 					<div class="alert alert-warning" role="alert">
-						<strong>GnomeSort (Element A[])</strong><br/>
-							<small>1</small>&emsp;<strong>int</strong> n := A.length();<br/>
-							<small>2</small>&emsp;<strong>int</strong> i := 0;<br/>
-							<small>3</small>&emsp;<strong>while</strong> (i < n) <strong>do</strong><br/>
-							<small>4</small>	&emsp;&emsp;<strong>if</strong> (i == 0) <strong>then</strong><br/>
-							<small>5</small>	&emsp;&emsp;&emsp;i++;<br/>
-							<small>6</small>		&emsp;&emsp;<strong>end</strong><br/>
-							<small>7</small>	&emsp;&emsp;<strong>if</strong> (A[i].k >= A[i - 1].k) <strong>then</strong><br/>
-							<small>8</small>	&emsp;&emsp;&emsp;i++;<br/>
-							<small>9</small>		&emsp;&emsp;<strong>else</strong><br/>
-							<small>10</small>	&emsp;&emsp;&emsp;vertausche(A, i, i -1);<br/>
-							<small>11</small>	&emsp;&emsp;&emsp;i--;<br/>
-							<small>12</small>		&emsp;&emsp;<strong>end</strong><br/>
-							<small>13</small>		&emsp;<strong>end</strong><br/>
+						<strong>int</strong> l := 0;<br/>
+						<strong>int</strong> r := A.length();<br/>
+						<strong>Reines 2-Wege-Mergesort (Element A[], int l, int r)</strong><br/>
+							<small>1</small>&emsp;<strong>int</strong> s := 1;<br/>
+							<small>2</small>&emsp;<strong>while</strong> (s < r - l + 1) <strong>do</strong><br/>
+							<small>3</small>&emsp;&emsp;<strong>int</strong> ll := l;<br/>
+							<small>4</small>&emsp;&emsp;<strong>while</strong> (ll + s <= r) <strong>do</strong><br/>
+							<small>5</small>&emsp;&emsp;&emsp;<strong>int</strong> mm := ll + s;<br/>
+							<small>6</small>&emsp;&emsp;&emsp;<strong>int</strong> rr := mm + s - 1;<br/>
+							<small>7</small>&emsp;&emsp;&emsp;<strong>if</strong> (rr > r) <strong>then</strong><br/>
+							<small>8</small>&emsp;&emsp;&emsp;&emsp;rr := r;<br/>
+							<small>9</small>&emsp;&emsp;&emsp;<strong>end</strong><br/>
+							<small>10</small>&emsp;&emsp;&emsp;Merge (A, ll, mm, rr);<br/>
+							<small>11</small>&emsp;&emsp;&emsp;ll := rr + 1;<br/>
+							<small>12</small>&emsp;&emsp;<strong>end</strong><br/>
+							<small>13</small>&emsp;&emsp;s := s * 2;<br/>
+							<small>14</small>&emsp;<strong>end</strong><br/>
 					</div>
 			  </div>
 
@@ -165,7 +154,7 @@
 		
 		<script src="../dist/bootstrap/bootstrap.bundle.min.js"></script>
 		<script src="../js/util.js"></script>
-		<script src="../js/sorting/gnomesort.js"></script>
+		<script src="../js/sorting/straightmergesort.js"></script>
 		<script src="../js/sorting/util.js"></script>
 	</body>
 </html>
