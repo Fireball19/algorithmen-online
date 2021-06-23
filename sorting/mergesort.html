@@ -37,14 +37,14 @@
 					<li><a class="dropdown-item" href="selectionsort.html">SelectionSort</a></li>
 					<hr>
 					<li><a class="dropdown-item" href="gnomesort.html">GnomeSort</a></li>
-					<li><a class="dropdown-item active" href="#">InsertionSort</a></li>
+					<li><a class="dropdown-item" href="insertionsort.html">InsertionSort</a></li>
 					<li><a class="dropdown-item" href="bubblesort.html">BubbleSort</a></li>
 					<li><a class="dropdown-item" href="shakersort.html">ShakerSort</a></li>
 					<hr>
 					<li><a class="dropdown-item" href="quicksort.html">QuickSort</a></li>
 					<li><a class="dropdown-item" href="heapsort.html">HeapSort</a></li>
 					<hr>
-					<li><a class="dropdown-item" href="mergesort.html">2-Wege-MergeSort</a></li>
+					<li><a class="dropdown-item active" href="#">2-Wege-Mergesort</a></li>
 				  </ul>
 				</li>
 				<li class="nav-item dropdown">
@@ -87,9 +87,9 @@
 			</div>
 		</noscript>
 		
-		<h1>InsertionSort</h1>
+		<h1>2-Wege-Mergesort</h1>
 		
-		InsertionSort hat eine Laufzeit von <var><strong>O(n)</strong></var> im Best-Case und von <var><strong>O(n²)</strong></var> im Average- und Worst-Case.
+		2-Wege-Mergesort hat eine Laufzeit im Best-, Average- und Worst-Case von <var><strong>O(n log(n))</strong></var>.
 		
 		<hr>
 		
@@ -102,25 +102,11 @@
 			<h3>Demo</h3>
 			<div id="array"></div>
 			<br>
-			<button type="button" class="btn btn-primary" onclick="insertionSort()" id="demo-btn">
+			<button type="button" class="btn btn-primary" onclick="mergeSort()" id="demo-btn">
 			<span class="spinner-border spinner-border-sm visually-hidden" role="status" aria-hidden="true" id="demo-spinner"></span>
 			<span class="visually-hidden" id="demo-spinner-text">sortiere...</span>
 			<span id="demo-btn-text">Zufällige Zahlenfolge sortieren</span>
 			</button>
-
-			<div class="form-check form-switch">
-				<input class="form-check-input" type="checkbox" id="checkbox-demo-log" onclick="checkboxDemoLog()">
-				<label class="form-check-label" for="checkbox-demo-log">Log sichtbar</label>
-			</div>
-  
-			<br>
-			  
-			<div class="visually-hidden" id="demo-log-div">
-				<h3>Demo Log</h3>
-				<div class="alert alert-secondary" role="alert">
-					<span id="demo-log"></span>
-				</div>
-			</div>
 
 			  </div>
 			  <!--Grid column-->
@@ -129,15 +115,15 @@
 					<h3>Pseudocode</h3>
 					
 					<div class="alert alert-warning" role="alert">
-						<strong>InsertionSort (Element A[])</strong><br/>
-							<small>1</small>&emsp;<strong>int</strong> n := A.length();<br/>
-							<small>2</small>&emsp;<strong>for</strong> (<strong>int</strong> i := 1; i < n; i++) <strong>do</strong><br/>
-							<small>3</small>	&emsp;&emsp;<strong>int</strong> j := i;<br/>
-							<small>4</small>	&emsp;&emsp;<strong>while</strong> ((j > 0) <strong>and</strong> (A[j].k < A[j - 1].k)) <strong>do</strong><br/>
-							<small>5</small>		&emsp;&emsp;&emsp;vertausche (A, j, j - 1);<br/>
-							<small>6</small>			&emsp;&emsp;&emsp;j--;<br/>
-							<small>7</small>		&emsp;&emsp;<strong>end</strong><br/>
-							<small>8</small>&emsp;<strong>end</strong><br/>
+						<strong>int</strong> l := 0;<br/>
+						<strong>int</strong> r := A.length() - 1;<br/>
+						<strong>2-Wege-Mergesort (Element A[], int l, int r)</strong><br/>
+							<small>1</small>&emsp;<strong>if</strong> (l < r) <strong>then</strong><br/>
+							<small>2</small>&emsp;&emsp;<strong>int</strong> m := (l + r) / 2;<br/>
+							<small>3</small>&emsp;&emsp;2-Wege-Mergesort(A, l, m);<br/>
+							<small>4</small>&emsp;&emsp;2-Wege-Mergesort(A, m + 1, r);<br/>
+							<small>5</small>&emsp;&emsp;Merge(A, l, m + 1, r);<br/>
+							<small>6</small>&emsp;<strong>end</strong><br/>
 					</div>
 			  </div>
 
@@ -159,7 +145,7 @@
 		
 		<script src="../dist/bootstrap/bootstrap.bundle.min.js"></script>
 		<script src="../js/util.js"></script>
-		<script src="../js/sorting/insertionsort.js"></script>
+		<script src="../js/sorting/mergesort.js"></script>
 		<script src="../js/sorting/util.js"></script>
 	</body>
 </html>
