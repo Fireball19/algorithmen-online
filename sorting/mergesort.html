@@ -1,0 +1,151 @@
+<!doctype html>
+<html lang="de">
+	<head>
+		<!-- Required meta tags -->
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		
+		<!-- Favicon -->
+		<link rel="icon" type="image/ico" href="../assets/favicon/favicon.ico">
+
+		<!-- Bootstrap CSS -->
+		<link rel="stylesheet" href="../dist/bootstrap/bootstrap.min.css"/>
+		<link rel="stylesheet" href="../css/navbar.css"/>
+		<link rel="stylesheet" href="../css/array.css"/>
+
+		<title>Algorithmen - online</title>
+	</head>
+	<body>
+		<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+		  <div class="container-fluid">
+			<span class="navbar-brand" href="#">Algorithmen - online</span>
+			<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+			  <span class="navbar-toggler-icon"></span>
+			</button>
+			<div class="collapse navbar-collapse" id="navbarCollapse">
+			  <ul class="navbar-nav">
+				<li class="nav-item">
+					<a class="nav-link" href="../index.html">
+					Übersicht
+					</a>
+				</li>
+				<li class="nav-item dropdown">
+				  <a class="nav-link dropdown-toggle active" href="#" id="navbarDarkDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+					Sortieren
+				  </a>
+				  <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuLink">
+					<li><a class="dropdown-item" href="selectionsort.html">SelectionSort</a></li>
+					<hr>
+					<li><a class="dropdown-item" href="gnomesort.html">GnomeSort</a></li>
+					<li><a class="dropdown-item" href="insertionsort.html">InsertionSort</a></li>
+					<li><a class="dropdown-item" href="bubblesort.html">BubbleSort</a></li>
+					<li><a class="dropdown-item" href="shakersort.html">ShakerSort</a></li>
+					<hr>
+					<li><a class="dropdown-item" href="quicksort.html">QuickSort</a></li>
+					<li><a class="dropdown-item" href="heapsort.html">HeapSort</a></li>
+					<hr>
+					<li><a class="dropdown-item active" href="#">2-Wege-Mergesort</a></li>
+				  </ul>
+				</li>
+				<li class="nav-item dropdown">
+				  <a class="nav-link dropdown-toggle" href="#" id="navbarDarkDropdownMenuLinkHashing" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+					Hashing
+				  </a>
+				  <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuLinkHashing">
+					<li><a class="dropdown-item" href="../hashing/linearessondieren.html">Lineares Sondieren</a></li>
+					<li><a class="dropdown-item" href="../hashing/quadratischessondieren.html">Quadratisches Sondieren</a></li>
+					<hr>
+					<li><a class="dropdown-item" href="../hashing/doublehashing.html">Double Hashing</a></li>
+					<li><a class="dropdown-item" href="../hashing/brentsalgorithmus.html">Brents Algorithmus</a></li>
+					<hr>
+					<li><a class="dropdown-item" href="../hashing/kuckuckshashing.html">Kuckucks-Hashing</a></li>
+				  </ul>
+				</li>
+				<li class="nav-item dropdown">
+				  <a class="nav-link dropdown-toggle" href="#" id="navbarDarkDropdownMenuLinkStringSearching" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+					String Searching
+				  </a>
+				  <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuLinkStringSearching">
+					<li><a class="dropdown-item" href="../string-searching/naivesuche.html">Naive Suche</a></li>
+					<li><a class="dropdown-item" href="../string-searching/knuthmorrispratt.html">Knuth-Morris-Pratt</a></li>
+				  </ul>
+				</li>
+			  </ul>
+			</div>
+		  </div>
+		</nav>
+
+		<main class="container content-center">
+		
+		<!-- no javascript -->
+		<noscript>
+			<div class="alert alert-danger" role="alert">
+			<h4 class="alert-heading">JavaScript deaktiviert!</h4>
+			<hr>
+			<p>Algorithmen - online benötigt JavaScript um einwandfrei zu funktionieren.<br/> 
+			Aktiviere Javascript und kehre auf die Seite zurück um den vollen Umfang der Seite zu nutzen.</p>
+			</div>
+		</noscript>
+		
+		<h1>2-Wege-Mergesort</h1>
+		
+		2-Wege-Mergesort hat eine Laufzeit im Best-, Average- und Worst-Case von <var><strong>O(n log(n))</strong></var>.
+		
+		<hr>
+		
+		 <!--Grid row-->
+			<div class="row d-flex justify-content-center">
+
+			  <!--Grid column-->
+			  <div class="col-md-6">
+
+			<h3>Demo</h3>
+			<div id="array"></div>
+			<br>
+			<button type="button" class="btn btn-primary" onclick="mergeSort()" id="demo-btn">
+			<span class="spinner-border spinner-border-sm visually-hidden" role="status" aria-hidden="true" id="demo-spinner"></span>
+			<span class="visually-hidden" id="demo-spinner-text">sortiere...</span>
+			<span id="demo-btn-text">Zufällige Zahlenfolge sortieren</span>
+			</button>
+
+			  </div>
+			  <!--Grid column-->
+			  
+			  <div class="col-md-6">
+					<h3>Pseudocode</h3>
+					
+					<div class="alert alert-warning" role="alert">
+						<strong>int</strong> l := 0;<br/>
+						<strong>int</strong> r := A.length() - 1;<br/>
+						<strong>2-Wege-Mergesort (Element A[], int l, int r)</strong><br/>
+							<small>1</small>&emsp;<strong>if</strong> (l < r) <strong>then</strong><br/>
+							<small>2</small>&emsp;&emsp;<strong>int</strong> m := (l + r) / 2;<br/>
+							<small>3</small>&emsp;&emsp;2-Wege-Mergesort(A, l, m);<br/>
+							<small>4</small>&emsp;&emsp;2-Wege-Mergesort(A, m + 1, r);<br/>
+							<small>5</small>&emsp;&emsp;Merge(A, l, m + 1, r);<br/>
+							<small>6</small>&emsp;<strong>end</strong><br/>
+					</div>
+			  </div>
+
+			</div>
+			<!--Grid row-->
+		</main>
+		
+		<footer class="footer fixed-bottom mt-auto py-3 bg-light">
+			<div class="container text-center">
+				<span class="text-muted">
+				<a href="https://github.com/Ra-Coding/algorithmen-online/blob/main/LICENSE">MIT Lizenz</a> &copy; 2021 Ra-Coding | Algorithmen - online auf <a href="https://github.com/Ra-Coding/algorithmen-online">Github 
+				<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-github" viewBox="0 0 16 16">
+				<path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z"/>
+				</svg>
+				</a>
+				</span>
+			</div>
+		</footer>
+		
+		<script src="../dist/bootstrap/bootstrap.bundle.min.js"></script>
+		<script src="../js/util.js"></script>
+		<script src="../js/sorting/mergesort.js"></script>
+		<script src="../js/sorting/util.js"></script>
+	</body>
+</html>
