@@ -28,6 +28,11 @@ async function mergeSortImpl(array, l, r, delay = 500) {
 	
 	counter--;
 	if (counter == 0) {
+		// change color of sorted elements
+		for (var i = 0; i < array.length; i++) {
+			array[i].style.backgroundColor = "#117733";
+		}
+		
 		stopSpinningDemo();
 	}
 }
